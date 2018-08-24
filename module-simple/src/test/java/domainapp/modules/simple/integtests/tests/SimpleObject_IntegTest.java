@@ -109,7 +109,7 @@ public class SimpleObject_IntegTest extends SimpleModuleIntegTestAbstract {
             final String title = titleService.titleOf(persona);
 
             // then
-            assertThat(title).isEqualTo("Object: " + name);
+            assertThat(title).isEqualTo("Persona: " + name);
         }
     }
 

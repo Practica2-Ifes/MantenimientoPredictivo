@@ -20,9 +20,13 @@
 package domainapp.modules.simple.fixture;
 
 import org.apache.isis.applib.fixturescripts.BuilderScriptAbstract;
+import org.apache.isis.applib.value.DateTime;
 
+import domainapp.modules.simple.dom.impl.Domicilio;
+import domainapp.modules.simple.dom.impl.EstadoCivil;
 import domainapp.modules.simple.dom.impl.Persona;
 import domainapp.modules.simple.dom.impl.Personas;
+import domainapp.modules.simple.dom.impl.TipoDeDocumento;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -32,6 +36,30 @@ public class SimpleObjectBuilder extends BuilderScriptAbstract<Persona, SimpleOb
 
     @Getter @Setter
     private String name;
+    
+    @Getter @Setter
+    private String apellido;
+    
+    @Getter @Setter
+    private Integer documento;
+    
+    @Getter @Setter
+    private TipoDeDocumento td;
+    
+    @Getter @Setter
+    private Integer telefono;
+    
+    @Getter @Setter
+    private String email;
+    
+    @Getter @Setter
+    private DateTime fechaNacimiento;
+    
+    @Getter @Setter
+    private EstadoCivil estadoCivil;
+    
+    @Getter @Setter
+    private Domicilio domicilio;
 
     @Getter
     private Persona object;
@@ -41,7 +69,7 @@ public class SimpleObjectBuilder extends BuilderScriptAbstract<Persona, SimpleOb
 
         checkParam("name", ec, String.class);
 
-        object = wrap(personas).create(name);
+        object = wrap(personas).create(name,apellido,documento,td,telefono,email, fechaNacimiento, estadoCivil, domicilio);
     }
 
     @javax.inject.Inject

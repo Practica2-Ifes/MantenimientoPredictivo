@@ -36,6 +36,7 @@ import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.xactn.TransactionService;
+import org.apache.isis.applib.value.DateTime;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType = "simple.SimpleObjectMenu", repositoryFor = Persona.class)
 @DomainServiceLayout(named = "Personas", menuOrder = "10")
@@ -71,8 +72,18 @@ public class Personas {
 
 	@Action(domainEvent = CreateDomainEvent.class)
 	@MemberOrder(sequence = "3")
-	public Persona create(@ParameterLayout(named = "Name") final String name) {
-		return repositoryService.persist(new Persona(name));
+	public Persona create(@ParameterLayout(named = "Name") final String name,
+						  @ParameterLayout(named = "Apellido") final String apellido,
+						  @ParameterLayout(named = "Documento") final Integer documento,
+						  @ParameterLayout(named = "Tipo De Documento") final TipoDeDocumento td,
+						  @ParameterLayout(named = "Telefono") final Integer telefono,
+						  @ParameterLayout(named = "E-Mail") final String email,
+						  @ParameterLayout(named = "Fecha de Nacimiento") final DateTime fechaNacimiento,
+						  @ParameterLayout(named = "Estado Civil") final EstadoCivil estadoCivil,
+						  @ParameterLayout(named = "Domicilio") final Domicilio domicilio)
+
+	{
+		return repositoryService.persist(new Persona(name,apellido,documento,td,telefono,email,fechaNacimiento,estadoCivil,domicilio));
 	}
 
 	@javax.inject.Inject
