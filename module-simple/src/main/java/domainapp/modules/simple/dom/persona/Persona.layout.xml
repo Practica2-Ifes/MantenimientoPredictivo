@@ -35,6 +35,14 @@
                                     <c:describedAs>Deletes this object from the persistent datastore</c:describedAs>
                                 </c:action>
                                 <c:property id="name" namedEscaped="true"/>
+                                <c:property id="apellido" namedEscaped="true"/>
+                                <c:property id="documento" namedEscaped="true"/>
+                                <c:property id="td" namedEscaped="true"/>
+                                <c:property id="telefono" namedEscaped="true"/>
+                                <c:property id="email" namedEscaped="true"/>
+                                <c:property id="fechaNacimiento" namedEscaped="true"/>
+                                <c:property id="estadoCivil" namedEscaped="true"/>
+                                <c:property id="domicilio" namedEscaped="true"/>
                                 <c:property id="notes" namedEscaped="true" multiLine="10" hidden="ALL_TABLES"/>
                             </c:fieldSet>
                         </bs3:col>
