@@ -18,8 +18,7 @@
  */
 package domainapp.modules.simple.dom.persona;
 
-import javax.inject.Inject;
-import javax.jdo.annotations.Column;
+
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 
@@ -28,7 +27,6 @@ import com.google.common.collect.ComparisonChain;
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 
 import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -48,7 +46,7 @@ import org.apache.isis.applib.value.DateTime;
 
 import lombok.AccessLevel;
 
-@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "simple")
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @javax.jdo.annotations.Unique(name="Persona_apellido_UNQ", members = {"apellido"})
@@ -176,7 +174,7 @@ public class Persona implements Comparable<Persona> {
     
     @javax.inject.Inject
     @javax.jdo.annotations.Column(allowsNull = "false")
-    Personas personas;
+    PersonaRepository personas;
     //endregion
 
 }

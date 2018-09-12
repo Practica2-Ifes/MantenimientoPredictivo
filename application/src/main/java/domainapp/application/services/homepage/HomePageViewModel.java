@@ -25,7 +25,7 @@ import org.apache.isis.applib.annotation.Nature;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 
 import domainapp.modules.simple.dom.persona.Persona;
-import domainapp.modules.simple.dom.persona.Personas;
+import domainapp.modules.simple.dom.persona.PersonaRepository;
 
 @DomainObject(
         nature = Nature.VIEW_MODEL,
@@ -42,5 +42,5 @@ public class HomePageViewModel {
     }
 
     @javax.inject.Inject
-    Personas personas;
+    PersonaRepository personas;
 }

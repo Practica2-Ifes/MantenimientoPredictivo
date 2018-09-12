@@ -20,31 +20,17 @@ package domainapp.modules.simple.dom.persona;
 
 import java.util.List;
 
-import org.datanucleus.query.typesafe.TypesafeQuery;
-
 import domainapp.modules.simple.dom.domicilio.Domicilio;
-import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
-import domainapp.modules.simple.dom.persona.QPersona;
 
-import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.ActionLayout;
-import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
-import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.annotation.ParameterLayout;
-import org.apache.isis.applib.annotation.Programmatic;
-import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.services.eventbus.ActionDomainEvent;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.services.xactn.TransactionService;
 import org.apache.isis.applib.value.DateTime;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Persona.class)
-public class Personas {
+public class PersonaRepository {
 
 	public List<Persona> listarPersonas() {
 		return repositoryService.allInstances(Persona.class);

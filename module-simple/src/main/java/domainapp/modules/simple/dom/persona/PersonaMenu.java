@@ -49,7 +49,7 @@ public class PersonaMenu {
 	}
 	
 	@javax.inject.Inject
-	Personas personas;
+	PersonaRepository personas;
 	
 	@javax.inject.Inject
 	DomicilioRepository domicilioRepository;
