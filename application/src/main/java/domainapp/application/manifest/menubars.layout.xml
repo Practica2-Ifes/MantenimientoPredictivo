@@ -20,16 +20,27 @@
 <mb3:menuBars xsi:schemaLocation="http://isis.apache.org/applib/layout/menubars/bootstrap3 http://isis.apache.org/applib/layout/menubars/bootstrap3/menubars.xsd http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/links http://isis.apache.org/applib/layout/links/links.xsd" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:lnk="http://isis.apache.org/applib/layout/links" xmlns:mb3="http://isis.apache.org/applib/layout/menubars/bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
         <mb3:menu>
-            <mb3:named>Personas</mb3:named>
+            <mb3:named>PersonaMenu</mb3:named>
             <mb3:section>
-                <mb3:serviceAction objectType="simple.SimpleObjectMenu" id="create">
+                <mb3:serviceAction objectType="simple.PersonaMenu" id="crear">
                     <cpt:named>Crear</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.SimpleObjectMenu" id="findByName">
-                    <cpt:named>Buscar por nombre</cpt:named>
+                <mb3:serviceAction objectType="simple.PersonaMenu" id="listar">
+                    <cpt:named>Listar personas</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.SimpleObjectMenu" id="listAll">
-                    <cpt:named>Listar todas</cpt:named>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Other</mb3:named>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>DomicilioMenu</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="simple.DomicilioMenu" id="crear">
+                    <cpt:named>Crear</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.DomicilioMenu" id="listar">
+                    <cpt:named>Listar Domicilios</cpt:named>
                 </mb3:serviceAction>
             </mb3:section>
         </mb3:menu>
