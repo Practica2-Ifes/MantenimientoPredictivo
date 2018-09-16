@@ -11,8 +11,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.value.DateTime;
+import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
@@ -42,7 +41,7 @@ public class PersonaMenu {
 						  @ParameterLayout(named = "Tipo De Documento") final TipoDeDocumento td,
 						  @ParameterLayout(named = "Telefono") final Integer telefono,
 						  @ParameterLayout(named = "E-Mail") final String email,
-						  @ParameterLayout(named = "Fecha de Nacimiento") final DateTime fechaNacimiento,
+						  @ParameterLayout(named = "Fecha de Nacimiento") final LocalDate fechaNacimiento,
 						  @ParameterLayout(named = "Estado Civil") final EstadoCivil estadoCivil,
 						  @ParameterLayout(named = "Domicilio") final Domicilio domicilio) {
 		return personas.crear(name, apellido, documento, td, telefono, email, fechaNacimiento, estadoCivil, domicilio);

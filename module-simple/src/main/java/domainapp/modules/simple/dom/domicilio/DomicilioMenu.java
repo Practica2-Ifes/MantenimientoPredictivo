@@ -27,7 +27,7 @@ public class DomicilioMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Domicilio")
 	@MemberOrder(sequence = "1.2")
-	public Domicilio create(@ParameterLayout(named = "Calle") final String calle,
+	public Domicilio crear(@ParameterLayout(named = "Calle") final String calle,
 						  @ParameterLayout(named = "Altura") final Integer altura,
 						  @ParameterLayout(named = "Barrio") final String barrio,
 						  @ParameterLayout(named = "Provincia") final Provincia provincia,

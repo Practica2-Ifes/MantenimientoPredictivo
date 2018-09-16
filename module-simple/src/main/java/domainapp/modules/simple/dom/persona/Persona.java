@@ -21,6 +21,7 @@ package domainapp.modules.simple.dom.persona;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.google.common.collect.ComparisonChain;
 
@@ -42,7 +43,8 @@ import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
-import org.apache.isis.applib.value.DateTime;
+import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJaxb;
+import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
 
@@ -59,55 +61,49 @@ public class Persona implements Comparable<Persona> {
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Nombre: ")
+    @Title(prepend = "Persona: ")
     private String name;
 
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
+    @Title(prepend = " ")
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Apellido: ")
     private String apellido;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Documento: ")
     private Integer documento;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Tipo de Documento: ")
     private TipoDeDocumento td;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Telefono: ")
     private Integer telefono;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length = 100)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "E-Mail: ")
     private String email;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
+    @XmlJavaTypeAdapter(ForJaxb.class)
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Fecha de Nacimiento: ")
-    private DateTime fechaNacimiento;
+    private LocalDate fechaNacimiento;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Estado Civil: ")
     private EstadoCivil estadoCivil;
     
     @javax.jdo.annotations.Column(allowsNull = "false", name="DOMICILIO_ID")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Domicilio: ")
     private Domicilio domicilio;
     
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
@@ -172,9 +168,6 @@ public class Persona implements Comparable<Persona> {
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     MessageService messageService;
     
-    @javax.inject.Inject
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    PersonaRepository personas;
     //endregion
 
 }
