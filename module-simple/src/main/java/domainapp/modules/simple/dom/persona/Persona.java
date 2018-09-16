@@ -59,55 +59,48 @@ public class Persona implements Comparable<Persona> {
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Nombre: ")
+    @Title(prepend = "Persona: ")
     private String name;
 
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
+    @Title(prepend = " ")
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Apellido: ")
     private String apellido;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Documento: ")
     private Integer documento;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Tipo de Documento: ")
     private TipoDeDocumento td;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Telefono: ")
     private Integer telefono;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length = 100)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "E-Mail: ")
     private String email;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Fecha de Nacimiento: ")
     private DateTime fechaNacimiento;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Estado Civil: ")
     private EstadoCivil estadoCivil;
     
     @javax.jdo.annotations.Column(allowsNull = "false", name="DOMICILIO_ID")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Domicilio: ")
     private Domicilio domicilio;
     
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
