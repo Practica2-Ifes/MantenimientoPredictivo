@@ -35,32 +35,16 @@ public class PersonaRepository {
 	public List<Persona> listarPersonas() {
 		return repositoryService.allInstances(Persona.class);
 	}
-	
-	public Persona crear(
-			  final String name,
-			  final String apellido,
-			  final Integer documento,
-			  final TipoDeDocumento td,
-			  final Integer telefono,
-			  final String email,
-			  final LocalDate fechaNacimiento,
-			  final EstadoCivil estadoCivil,
-			  final Domicilio domicilio) {
-		final Persona object = new Persona(name, apellido, documento, td,
-				telefono, email, fechaNacimiento, estadoCivil, domicilio);
-		serviceRegistry.injectServicesInto(object);
-		repositoryService.persist(object);
-		return object;
-	}
 
 	@javax.inject.Inject
 	RepositoryService repositoryService;
 
-	@javax.inject.Inject
-	IsisJdoSupport isisJdoSupport;
-	
-	@javax.inject.Inject
-	ServiceRegistry2 serviceRegistry;
+//	@javax.inject.Inject
+//	IsisJdoSupport isisJdoSupport;
+//	
+//	@javax.inject.Inject
+//	ServiceRegistry2 serviceRegistry;
+//va en la que hereda
 
 
 }
