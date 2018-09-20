@@ -22,12 +22,13 @@
         <mb3:menu>
             <mb3:named>PersonaMenu</mb3:named>
             <mb3:section>
-                <mb3:serviceAction objectType="simple.PersonaMenu" id="crear">
-                    <cpt:named>Crear</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.PersonaMenu" id="listar">
+                            <mb3:serviceAction objectType="simple.PersonaMenu" id="Listar todas las Personas">
                     <cpt:named>Listar personas</cpt:named>
                 </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.PersonaMenu" id="Crear Persona">
+                    <cpt:named>Crear Persona</cpt:named>
+                </mb3:serviceAction>
+
             </mb3:section>
         </mb3:menu>
         <mb3:menu unreferencedActions="true">
@@ -36,13 +37,55 @@
         <mb3:menu>
             <mb3:named>DomicilioMenu</mb3:named>
             <mb3:section>
-                <mb3:serviceAction objectType="simple.DomicilioMenu" id="crear">
-                    <cpt:named>Crear</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.DomicilioMenu" id="listar">
+                            <mb3:serviceAction objectType="simple.DomicilioMenu" id="Listar todos los domicilios">
                     <cpt:named>Listar Domicilios</cpt:named>
                 </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.DomicilioMenu" id="Crear Domicilio">
+                    <cpt:named>Crear Domicilio</cpt:named>
+                </mb3:serviceAction>
+
             </mb3:section>
+        </mb3:menu>
+                <mb3:menu>
+            <mb3:named>UnidadMenu</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="simple.UnidadMenu" id="Listar todas las Unidades">
+                    <cpt:named>Listar Unidades de Mantenimiento</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+                      <mb3:menu>
+            <mb3:named>GeneradorMenu</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="simple.Generador" id="Listar todos los generadores">
+                    <cpt:named>Listar Generadores</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.Generador" id="Crear Generador">
+                    <cpt:named>Crear Generador</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+                      <mb3:menu>
+            <mb3:named>InterruptorMenu</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="simple.Interruptor" id="Listar todos los interruptores">
+                    <cpt:named>Listar Interruptores</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.Interruptor" id="Crear Interruptor">
+                    <cpt:named>Crear Interruptor</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+        <mb3:named>TransformadorMenu</mb3:named>
+        <mb3:section>
+        <mb3:serviceAction objectType="simple.Transformador" id="Listar todos los transformadores">
+        <cpt:named>Listar Transformadores</cpt:named>
+        </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.Transformador" id="Crear Transformador">
+        <cpt:named>Crear Transformador</cpt:named>
+        </mb3:serviceAction>
+        </mb3:section>
         </mb3:menu>
         <mb3:menu unreferencedActions="true">
             <mb3:named>Other</mb3:named>

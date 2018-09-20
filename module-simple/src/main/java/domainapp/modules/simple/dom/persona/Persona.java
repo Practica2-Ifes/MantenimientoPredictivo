@@ -19,7 +19,9 @@
 package domainapp.modules.simple.dom.persona;
 
 
+import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Unique;
 import javax.jdo.annotations.VersionStrategy;
 
 import com.google.common.collect.ComparisonChain;
@@ -46,8 +48,8 @@ import org.apache.isis.applib.value.DateTime;
 
 import lombok.AccessLevel;
 
-@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb")
-@javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb",table = "Persona")
+@javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idPersona")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @javax.jdo.annotations.Unique(name="Persona_apellido_UNQ", members = {"apellido"})
 @DomainObject(auditing = Auditing.ENABLED)
@@ -106,6 +108,7 @@ public class Persona implements Comparable<Persona> {
     
     @javax.jdo.annotations.Column(allowsNull = "false", name="DOMICILIO_ID")
     @lombok.NonNull
+    @ForeignKey
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Domicilio: ")
     private Domicilio domicilio;

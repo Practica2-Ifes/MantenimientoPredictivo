@@ -23,7 +23,7 @@ import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
 public class PersonaMenu {
 
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named= "Listar todos los Clientes")
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named= "Listar todos las Personas")
 	@MemberOrder(sequence = "1")
 	public List<Persona> listar() {
 		return personas.listarPersonas();
