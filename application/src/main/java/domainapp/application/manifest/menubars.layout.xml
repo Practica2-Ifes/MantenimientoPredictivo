@@ -47,6 +47,9 @@
         <mb3:menu unreferencedActions="false">
             <mb3:named>Other</mb3:named>
         </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Other</mb3:named>
+        </mb3:menu>
         <mb3:menu>
             <mb3:named>Fichas</mb3:named>
             <mb3:section>

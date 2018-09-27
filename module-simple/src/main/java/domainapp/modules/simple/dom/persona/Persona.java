@@ -136,9 +136,4 @@ public abstract class Persona{
     }
 
 
-    @javax.inject.Inject
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    PersonaRepository personaRepository;
-
-
 }
