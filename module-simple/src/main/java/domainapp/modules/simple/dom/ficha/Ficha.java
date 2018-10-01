@@ -1,79 +1,46 @@
-package domainapp.modules.simple.dom.domicilio;
+package domainapp.modules.simple.dom.ficha;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
-import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.Parameter;
-import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
-import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
-import org.apache.isis.applib.value.DateTime;
-
-import com.google.common.collect.ComparisonChain;
+import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJaxb;
+import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
-
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
-@javax.jdo.annotations.Unique(name="Domicilio_calle_UNQ", members = {"calle"})
 @DomainObject(auditing = Auditing.ENABLED)
 @DomainObjectLayout()  // causes UI events to be triggered
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
-public class Domicilio {
+public class Ficha implements Comparable<Ficha> {
 
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    @Title(sequence="1",prepend = "Domicilio: ")
-    private String calle;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(sequence="2",append = ", ")
-    private Integer altura;
+    @XmlJavaTypeAdapter(ForJaxb.class)
+    @Title(prepend = "Ficha de: ")
+    private LocalDate fechaCreacion;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    private String barrio;
-    
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    private Provincia provincia;
-    
-    @javax.jdo.annotations.Column(allowsNull = "false", length=40)
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    @Title(sequence="3")
-    private String localidad;
-    
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    private String departamento;
-   
-    
-    @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
-    @Property(editing = Editing.ENABLED)
-    private String notes;
-
+    @Title(prepend = ", ")
+    private TipoDeFicha tipoDeFicha;
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
     public void delete() {
@@ -83,18 +50,16 @@ public class Domicilio {
     }
 
 
-
     //region > toString, compareTo
     @Override
     public String toString() {
-        return getProvincia().toString();
+        return "Ficha del dia: " + getFechaCreacion().toString();
     }
 
-    public int compareTo(final Domicilio other) {
-        return ComparisonChain.start()
-                .compare(this.getProvincia(), other.getProvincia())
-                .result();
-    }
+	@Override
+	public int compareTo(Ficha o) {
+		return 0;
+	}
     //endregion
 
 
@@ -113,5 +78,12 @@ public class Domicilio {
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     MessageService messageService;
-	
+    
+    @javax.inject.Inject
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    FichaRepository fichRepository;
+    //endregion
+
+
+
 }
