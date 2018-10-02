@@ -9,12 +9,10 @@ import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
-import org.joda.time.LocalDate;
 
-import domainapp.modules.simple.dom.domicilio.Domicilio;
-import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
+
+
 
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.PersonaMenu", repositoryFor = Persona.class)

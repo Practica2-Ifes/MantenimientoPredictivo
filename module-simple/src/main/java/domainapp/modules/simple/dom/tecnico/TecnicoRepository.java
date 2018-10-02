@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.tecnico;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +10,7 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.value.DateTime;
+import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.persona.EstadoCivil;
@@ -24,7 +25,7 @@ public class TecnicoRepository {
 	}
 	
 	public Tecnico crear(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final Integer telefono,
-			final String email, final DateTime fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
+			final String email, final LocalDate fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
 			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfecional,final Titulo titulo
 			) {
 		final Tecnico object=new Tecnico(name, apellido,documento, tipoDocumento,telefono,email,fechaNacimiento,estadoCivil,domicilio,numeroEmpleado,

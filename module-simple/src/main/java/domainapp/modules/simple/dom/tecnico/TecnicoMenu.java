@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.tecnico;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,8 +14,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.value.DateTime;
+import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
@@ -47,7 +47,7 @@ public class TecnicoMenu {
 			@ParameterLayout(named = "TipoDocumento") final TipoDeDocumento tipoDocumento,
 			@ParameterLayout(named = "Telefono") final Integer telefono,
 			@ParameterLayout(named = "Email") final String email,
-			@ParameterLayout(named = "Fecha Nacimiento") final DateTime fechaNacimiento,
+			@ParameterLayout(named = "Fecha Nacimiento") final LocalDate fechaNacimiento,
 			@ParameterLayout(named = "Estado Civil") final EstadoCivil estadoCivil, 
 			@ParameterLayout(named = "Domicilio") final Domicilio domicilio, 
 			@ParameterLayout(named = "Numero Empleado") final int numeroEmpleado,

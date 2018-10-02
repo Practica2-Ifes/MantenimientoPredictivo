@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.tecnico;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,15 +16,12 @@ import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.Property;
-import org.apache.isis.applib.annotation.PropertyLayout;
-import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
-import org.apache.isis.applib.value.DateTime;
+import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.persona.EstadoCivil;
@@ -38,12 +36,11 @@ import lombok.AccessLevel;
 @DomainObjectLayout()
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @lombok.Getter @lombok.Setter
-@lombok.RequiredArgsConstructor
-public class Tecnico extends Persona implements Comparable<Tecnico>{
+class Tecnico extends Persona implements Comparable<Tecnico>{
 	
 
 	public Tecnico(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final Integer telefono,
-			final String email, final DateTime fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
+			final String email, final LocalDate fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
 			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfecional,final Titulo titulo) {
 		super();
 		setName(name);
@@ -146,7 +143,11 @@ public class Tecnico extends Persona implements Comparable<Tecnico>{
 		}
 
 
-
+		@Override
+		public int compareTo(Tecnico o) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 
 	@Inject
 	@javax.jdo.annotations.NotPersistent
@@ -163,10 +164,4 @@ public class Tecnico extends Persona implements Comparable<Tecnico>{
 	@javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
 	MessageService messageService;
-	
-	@Override
-	public int compareTo(Tecnico o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }
