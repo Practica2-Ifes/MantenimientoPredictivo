@@ -12,7 +12,6 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Publishing;
 
 import domainapp.modules.simple.iinsumo.IInsumo;
-import domainapp.modules.simple.iinsumo.TipoInsumo;
 
 @javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimientodb", table = "Insumos")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idInsumo")
@@ -22,7 +21,8 @@ import domainapp.modules.simple.iinsumo.TipoInsumo;
 @lombok.Getter @lombok.Setter
 public class Insumo extends IInsumo {
 
-	public Insumo(List<TipoInsumo> tipoInsumo, double precio, String descripcion, int cantidad) {
+	public Insumo(List<domainapp.modules.simple.tipoInsumo.TipoInsumo> tipoInsumo, double precio, String descripcion,
+			int cantidad) {
 		super(tipoInsumo, precio, descripcion, cantidad);
 		// TODO Auto-generated constructor stub
 	}

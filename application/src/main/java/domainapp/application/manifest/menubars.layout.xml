@@ -90,6 +90,36 @@
         <mb3:menu unreferencedActions="true">
             <mb3:named>Other</mb3:named>
         </mb3:menu>
+        
+                <mb3:menu>
+        <mb3:named>InsumoMenu</mb3:named>
+        <mb3:section>
+        <mb3:serviceAction objectType="simple.Insumo" id="Listar todos los Insumos">
+        <cpt:named>Listar Insumos</cpt:named>
+        </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.Insumo" id="Crear Insumo">
+        <cpt:named>Crear Insumo</cpt:named>
+        </mb3:serviceAction>
+        </mb3:section>
+        </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Other</mb3:named>
+        </mb3:menu>
+        
+                <mb3:menu>
+        <mb3:named>TipoInsumoMenu</mb3:named>
+        <mb3:section>
+        <mb3:serviceAction objectType="simple.TipoInsumo" id="Listar Tipos">
+        <cpt:named>Listar Tipos</cpt:named>
+        </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.TipoInsumo" id="Crear Tipo">
+        <cpt:named>Crear Tipo</cpt:named>
+        </mb3:serviceAction>
+        </mb3:section>
+        </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Other</mb3:named>
+        </mb3:menu>
     </mb3:primary>
     <mb3:secondary>
         <mb3:menu>
