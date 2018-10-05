@@ -14,7 +14,8 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 
 import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.iinsumo.IInsumo;
-import domainapp.modules.simple.iinsumo.TipoInsumo;
+import domainapp.modules.simple.tipoInsumo.TipoInsumo;
+import domainapp.modules.simple.tipoInsumo.TipoInsumoMenu;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.Insumo", repositoryFor = Insumo.class)
 @DomainServiceLayout(named = "Insumo", menuOrder = "10.9")
@@ -25,6 +26,11 @@ public class InsumoMenu {
 	@MemberOrder(sequence = "1")
 	public List<Insumo> listarInsumos(){
 		return insumoRepository.listarInsumos();
+	}
+	
+	
+	public List<TipoInsumo> choices0Create(){
+		return tipoInsumoMenu.listarTipos();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
@@ -39,5 +45,7 @@ public class InsumoMenu {
 	
 	@javax.inject.Inject
 	InsumoRepository insumoRepository;
+	@javax.inject.Inject
+	TipoInsumoMenu tipoInsumoMenu;
 	
 }
