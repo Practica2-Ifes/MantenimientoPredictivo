@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.DiscriminatorStrategy;
+import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.annotation.Action;
@@ -44,7 +47,10 @@ public abstract class IInsumo implements Comparable<IInsumo> {
 
 
 
-	@javax.jdo.annotations.Column(allowsNull = "false",name= "TIPOINSUMO_ID")
+	@javax.jdo.annotations.Column(allowsNull = "false")
+	@Persistent(table="IINSUMO_TIPOINSUMO")
+	@Join(column="IINSUMO_ID_OID")
+	@Element(column="TIPOINSUMO_ID_EID")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Tipo Insumo: ")
