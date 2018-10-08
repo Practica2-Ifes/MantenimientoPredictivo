@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.persona;
+package domainapp.modules.simple.unidadMantenimiento;
 
 import java.util.List;
 
@@ -12,20 +12,19 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 
-
-
-
-@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.PersonaMenu", repositoryFor = Persona.class)
-@DomainServiceLayout(named = "Personas", menuOrder = "10.1")
-public class PersonaMenu {
-
+@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.UnidadMenu", repositoryFor = UnidadDeMantenimiento.class)
+@DomainServiceLayout(named = "Unidades", menuOrder = "10.3")
+public class UnidadMenu {
+	
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named= "Listar todos las Personas")
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todas las Unidades")
 	@MemberOrder(sequence = "1")
-	public List<Persona> listar() {
-		return personas.listarPersonas();
+	public List<UnidadDeMantenimiento> listarUnidades(){
+		return unidadRepository.listarUnidades();
 	}
 	
+	
 	@javax.inject.Inject
-	PersonaRepository personas;
+	UnidadRepository unidadRepository;
+
 }

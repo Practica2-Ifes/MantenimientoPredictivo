@@ -21,12 +21,12 @@ package domainapp.modules.simple.dom.persona;
 
 
 
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 
@@ -47,6 +47,7 @@ import org.joda.time.LocalDate;
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="personaId")
 @javax.jdo.annotations.Unique(name="Persona_documento_UNQ", members = {"documento"})
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
+
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
 public abstract class Persona{
