@@ -40,61 +40,40 @@ public class Domicilio implements Comparable<Domicilio> {
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Calle: ")
+    @Title(sequence="1",prepend = "Domicilio: ")
     private String calle;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Altura: ")
+    @Title(sequence="2",append = ", ")
     private Integer altura;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Barrio: ")
     private String barrio;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Provincia: ")
     private Provincia provincia;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length=40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Localidad: ")
+    @Title(sequence="3")
     private String localidad;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Departamento: ")
     private String departamento;
    
     
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
     @Property(editing = Editing.ENABLED)
     private String notes;
-
-
-//    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "name")
-//    public Persona updateName(
-//            @Parameter(maxLength = 40)
-//            @ParameterLayout(named = "Name")
-//            final String name) {
-//        setName(name);
-//        return this;
-//    }
-
-//    public String default0UpdateName() {
-//        return getName();
-//    }
-
-//    public TranslatableString validate0UpdateName(final String name) {
-//        return name != null && name.contains("!") ? TranslatableString.tr("Exclamation mark is not allowed") : null;
-//    }
 
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
