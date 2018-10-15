@@ -24,19 +24,19 @@ public class InsumoMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todos los Insumos")
 	@MemberOrder(sequence = "1")
-	public List<Insumo> listarInsumos(){
+	public List<Insumo> listar(){
 		return insumoRepository.listarInsumos();
 	}
 	
 	
-	public List<TipoInsumo> choices0Create(){
-		return tipoInsumoMenu.listarTipos();
+	public List<TipoInsumo> choices0Crear(){
+		return tipoInsumoMenu.listar();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Insumo")
 	@MemberOrder(sequence = "1.2")
-	public IInsumo create(@ParameterLayout(named="Tipo Insumo") final List<TipoInsumo> tipoInsumo,
+	public IInsumo crear(@ParameterLayout(named="Tipo Insumo") final List<TipoInsumo> tipoInsumo,
 						  @ParameterLayout(named="Precio") final double precio,
 						  @ParameterLayout(named="Descripcion") final String descripcion,
 						  @ParameterLayout(named="Cantidad") final int cantidad) {

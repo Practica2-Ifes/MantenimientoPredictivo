@@ -1,3 +1,4 @@
+
 package domainapp.modules.simple.generador;
 
 import java.util.List;
@@ -22,14 +23,14 @@ public class GeneradorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todos los generadores")
 	@MemberOrder(sequence = "1")
-	public List<Generador> listarGeneradores(){
+	public List<Generador> listar(){
 		return generadorRepository.listarGeneradores();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Generador")
 	@MemberOrder(sequence = "1.2")
-	public UnidadDeMantenimiento create(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion")final String descripcion,
 										@ParameterLayout(named="Consumo Energetico")final double consumoEnergetico) {
 		return generadorRepository.crear(estadoUnidad, descripcion, consumoEnergetico);

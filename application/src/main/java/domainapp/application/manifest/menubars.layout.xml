@@ -1,215 +1,155 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--
-  Licensed to the Apache Software Foundation (ASF) under one
-  or more contributor license agreements.  See the NOTICE file
-  distributed with this work for additional information
-  regarding copyright ownership.  The ASF licenses this file
-  to you under the Apache License, Version 2.0 (the
-  "License"); you may not use this file except in compliance
-  with the License.  You may obtain a copy of the License at
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor
+	license agreements. See the NOTICE file distributed with this work for additional
+	information regarding copyright ownership. The ASF licenses this file to
+	you under the Apache License, Version 2.0 (the "License"); you may not use
+	this file except in compliance with the License. You may obtain a copy of
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required
+	by applicable law or agreed to in writing, software distributed under the
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+	OF ANY KIND, either express or implied. See the License for the specific
+	language governing permissions and limitations under the License. -->
+<mb3:menuBars
+	xsi:schemaLocation="http://isis.apache.org/applib/layout/menubars/bootstrap3 http://isis.apache.org/applib/layout/menubars/bootstrap3/menubars.xsd http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/links http://isis.apache.org/applib/layout/links/links.xsd"
+	xmlns:cpt="http://isis.apache.org/applib/layout/component"
+	xmlns:lnk="http://isis.apache.org/applib/layout/links"
+	xmlns:mb3="http://isis.apache.org/applib/layout/menubars/bootstrap3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<mb3:primary>
+		<mb3:menu>
+			<mb3:named>Tecnicos</mb3:named>
+			<mb3:section>
+				<mb3:serviceAction objectType="simple.PersonaMenu" id="listar">
+					<cpt:named>Listar todas las Personas</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.TecnicoMenu" id="listar">
+					<cpt:named>Listar Tecnicos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.TecnicoMenu" id="crear">
+					<cpt:named>Crear Tecnico</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.DomicilioMenu" id="listar">
+					<cpt:named>Listar Domicilios</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.DomicilioMenu" id="crear">
+					<cpt:named>Crear Domicilio</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+		<mb3:menu>
+			<mb3:named>Unidades de Mantenimiento</mb3:named>
+			<mb3:section>
+				<mb3:serviceAction objectType="simple.UnidadMenu" id="listar">
+					<cpt:named>Listar todas las Unidades de Mantenimiento</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Generador" id="listar">
+					<cpt:named>Listar Generadores</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Generador" id="crear">
+					<cpt:named>Crear Generador</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Interruptor" id="listar">
+					<cpt:named>Listar Interruptores</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Interruptor" id="crear">
+					<cpt:named>Crear Interruptor</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Transformador" id="listar">
+					<cpt:named>Listar Transformadores</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Transformador" id="crear">
+					<cpt:named>Crear Transformador</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.IInsumos" id="listar">
+					<cpt:named>Listar todos los Insumos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Insumo" id="listar">
+					<cpt:named>Listar Insumos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Insumo" id="crear">
+					<cpt:named>Crear Insumo</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.TipoInsumo" id="listar">
+					<cpt:named>Listar Tipos de Insumos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.TipoInsumo" id="crear">
+					<cpt:named>Crear Tipo de Insumo</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+		<mb3:menu>
+			<mb3:named>Fichas</mb3:named>
 
-         http://www.apache.org/licenses/LICENSE-2.0
+			<mb3:section>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="crear">
+					<cpt:named>Crear</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="listar">
+					<cpt:named>Listar Fichas</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+		<mb3:menu unreferencedActions="true">
+			<mb3:named>Other</mb3:named>
+		</mb3:menu>
+	</mb3:primary>
 
-  Unless required by applicable law or agreed to in writing,
-  software distributed under the License is distributed on an
-  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-  KIND, either express or implied.  See the License for the
-  specific language governing permissions and limitations
-  under the License.
--->
-<mb3:menuBars xsi:schemaLocation="http://isis.apache.org/applib/layout/menubars/bootstrap3 http://isis.apache.org/applib/layout/menubars/bootstrap3/menubars.xsd http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/links http://isis.apache.org/applib/layout/links/links.xsd" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:lnk="http://isis.apache.org/applib/layout/links" xmlns:mb3="http://isis.apache.org/applib/layout/menubars/bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <mb3:primary>
-        <mb3:menu>
-            <mb3:named>Tecnicos</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="simple.TecnicoMenu" id="crear">
-                    <cpt:named>Crear Tecnicos</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.TecnicoMenu" id="listar">
-                    <cpt:named>Listar Tecnicos</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.PersonaMenu" id="Crear Persona">
-                    <cpt:named>Crear Persona</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        
-        <mb3:menu>
-            <mb3:named>Domicilios</mb3:named>
-            	<mb3:section>
-                	<mb3:serviceAction objectType="simple.DomicilioMenu" id="Listar todos los domicilios">
-                    	<cpt:named>Listar Domicilios</cpt:named>
-                	</mb3:serviceAction>
-                	<mb3:serviceAction objectType="simple.DomicilioMenu" id="Crear Domicilio">
-                    	<cpt:named>Crear Domicilio</cpt:named>
-                	</mb3:serviceAction>
-            	</mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        
-        <mb3:menu>
-        	<mb3:named>UnidadMenu</mb3:named>
-            	<mb3:section>
-                	<mb3:serviceAction objectType="simple.UnidadMenu" id="Listar todas las Unidades">
-                    	<cpt:named>Listar Unidades de Mantenimiento</cpt:named>
-               	 	</mb3:serviceAction>
-            	</mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-        	<mb3:named>GeneradorMenu</mb3:named>
-            	<mb3:section>
-                	<mb3:serviceAction objectType="simple.Generador" id="Listar todos los generadores">
-                    	<cpt:named>Listar Generadores</cpt:named>
-                	</mb3:serviceAction>
-                	<mb3:serviceAction objectType="simple.Generador" id="Crear Generador">
-                    	<cpt:named>Crear Generador</cpt:named>
-                	</mb3:serviceAction>
-            	</mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-
-        <mb3:menu>
-        	<mb3:named>InterruptorMenu</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="simple.Interruptor" id="Listar todos los interruptores">
-                    <cpt:named>Listar Interruptores</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.Interruptor" id="Crear Interruptor">
-                    <cpt:named>Crear Interruptor</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        
-        <mb3:menu>
-        	<mb3:named>TransformadorMenu</mb3:named>
-        	<mb3:section>
-        		<mb3:serviceAction objectType="simple.Transformador" id="Listar todos los transformadores">
-        			<cpt:named>Listar Transformadores</cpt:named>
-        		</mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.Transformador" id="Crear Transformador">
-        			<cpt:named>Crear Transformador</cpt:named>
-        		</mb3:serviceAction>
-        	</mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-
-        <mb3:menu>
-        	<mb3:named>InsumoMenu</mb3:named>
-        	<mb3:section>
-        		<mb3:serviceAction objectType="simple.Insumo" id="Listar todos los Insumos">
-        			<cpt:named>Listar Insumos</cpt:named>
-        		</mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.Insumo" id="Crear Insumo">
-        			<cpt:named>Crear Insumo</cpt:named>
-        		</mb3:serviceAction>
-        	</mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="true">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        
-                <mb3:menu>
-        <mb3:named>TipoInsumoMenu</mb3:named>
-        <mb3:section>
-        <mb3:serviceAction objectType="simple.TipoInsumo" id="Listar Tipos">
-        <cpt:named>Listar Tipos</cpt:named>
-        </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.TipoInsumo" id="Crear Tipo">
-        <cpt:named>Crear Tipo</cpt:named>
-        </mb3:serviceAction>
-        </mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="true">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Fichas</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="simple.FichaMenu" id="crear">
-                    <cpt:named>Crear</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="simple.FichaMenu" id="listar">
-                    <cpt:named>Listar Fichas</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="false">
-            <mb3:named>Other</mb3:named>
-        </mb3:menu>
-        
-        <mb3:menu unreferencedActions="true">
-	        <mb3:named>Other</mb3:named>
-	    </mb3:menu>    
-    </mb3:primary>
-
-    <mb3:secondary>
-        <mb3:menu>
-            <mb3:named>Prototyping</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadLayouts">
-                    <cpt:named>Download Object Layouts (ZIP)</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadMenuBarsLayout">
-                    <cpt:named>Download Menu Bars Layout (XML)</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.MetaModelServicesMenu" id="downloadMetaModel">
-                    <cpt:named>Download Meta Model (CSV)</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openSwaggerUi">
-                    <cpt:named>Open Swagger Ui</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openRestApi">
-                    <cpt:named>Open Rest Api</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="downloadSwaggerSchemaDefinition">
-                    <cpt:named>Download Swagger Schema Definition</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="downloadTranslations">
-                    <cpt:named>Download Translations</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="resetTranslationCache">
-                    <cpt:named>Clear translation cache</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToReadingTranslations">
-                    <cpt:named>Switch To Reading Translations</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToWritingTranslations">
-                    <cpt:named>Switch To Writing Translations</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.HsqlDbManagerMenu" id="hsqlDbManager">
-                    <cpt:named>HSQL DB Manager</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-    </mb3:secondary>
-    <mb3:tertiary>
-        <mb3:menu>
-            <mb3:named>Configuration Service Menu</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="isisApplib.ConfigurationServiceMenu" id="configuration">
-                    <cpt:named>Configuration</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-    </mb3:tertiary>
+	<mb3:secondary>
+		<mb3:menu>
+			<mb3:named>Prototyping</mb3:named>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadLayouts">
+					<cpt:named>Download Object Layouts (ZIP)</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadMenuBarsLayout">
+					<cpt:named>Download Menu Bars Layout (XML)</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.MetaModelServicesMenu" id="downloadMetaModel">
+					<cpt:named>Download Meta Model (CSV)</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openSwaggerUi">
+					<cpt:named>Open Swagger Ui</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openRestApi">
+					<cpt:named>Open Rest Api</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="downloadSwaggerSchemaDefinition">
+					<cpt:named>Download Swagger Schema Definition</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="downloadTranslations">
+					<cpt:named>Download Translations</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="resetTranslationCache">
+					<cpt:named>Clear translation cache</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToReadingTranslations">
+					<cpt:named>Switch To Reading Translations</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToWritingTranslations">
+					<cpt:named>Switch To Writing Translations</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.HsqlDbManagerMenu" id="hsqlDbManager">
+					<cpt:named>HSQL DB Manager</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+	</mb3:secondary>
+	<mb3:tertiary>
+		<mb3:menu>
+			<mb3:named>Configuration Service Menu</mb3:named>
+			<mb3:section>
+				<mb3:serviceAction objectType="isisApplib.ConfigurationServiceMenu" id="configuration">
+					<cpt:named>Configuration</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+	</mb3:tertiary>
 </mb3:menuBars>

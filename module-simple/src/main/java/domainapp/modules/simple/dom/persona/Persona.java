@@ -39,6 +39,7 @@ import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJaxb;
 import org.joda.time.LocalDate;
@@ -66,12 +67,14 @@ public abstract class Persona{
 
 	@Column(allowsNull="false",length=100)
 	@Property(editing=Editing.DISABLED)
+	@Title()
 	@PropertyLayout(named="Nombre")
     private String name;
 
 
 	@Column(allowsNull="false", length=100)
 	@Property(editing=Editing.DISABLED)
+	@Title()
 	@PropertyLayout(named="Apellido")
 	private String apellido;
 	
@@ -91,7 +94,7 @@ public abstract class Persona{
 	@Column(allowsNull="false")
 	@Property(editing=Editing.DISABLED)
 	@PropertyLayout(named="Telefono")
-    private Integer telefono;
+    private String telefono;
 
   
   	@Column(allowsNull="false",length=100)

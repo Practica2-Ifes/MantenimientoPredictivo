@@ -29,19 +29,19 @@ import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
 import lombok.AccessLevel;
 
-@PersistenceCapable(identityType=IdentityType.DATASTORE, schema="mantenimientodb",table="empleados")
+@PersistenceCapable(identityType=IdentityType.DATASTORE, schema="mantenimiento",table="empleados")
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY,column="IdEmpleado")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(auditing = Auditing.ENABLED)
 @DomainObjectLayout()
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @lombok.Getter @lombok.Setter
-class Tecnico extends Persona implements Comparable<Tecnico>{
+public class Tecnico extends Persona implements Comparable<Tecnico>{
 	
 
-	public Tecnico(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final Integer telefono,
+	public Tecnico(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final String telefono,
 			final String email, final LocalDate fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
-			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfecional,final Titulo titulo) {
+			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfesional,final Titulo titulo) {
 		super();
 		setName(name);
 		setApellido(apellido);
@@ -56,7 +56,7 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 		setSectorDeTrabajo(sectorTrabajo);
 		setObraSocial(obraSocial);
 		setArt(art);
-		setMatriculaProfecional(matriculaProfecional);
+		setMatriculaProfesional(matriculaProfesional);
 		setTitulo(titulo);
 	}
 	public List<Tecnico> listarEmpleados(){
@@ -115,13 +115,13 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 
 	@javax.jdo.annotations.Column(allowsNull = "false")
 	@Property()
-	private String matriculaProfecional;
+	private String matriculaProfesional;
 	
-	public String getMatriculaProfecional() {
-		return matriculaProfecional;
+	public String getMatriculaProfesional() {
+		return matriculaProfesional;
 	}
-	public void setMatriculaProfecional(String matriculaProfecional) {
-		this.matriculaProfecional = matriculaProfecional;
+	public void setMatriculaProfesional(String matriculaProfesional) {
+		this.matriculaProfesional = matriculaProfesional;
 	}
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")

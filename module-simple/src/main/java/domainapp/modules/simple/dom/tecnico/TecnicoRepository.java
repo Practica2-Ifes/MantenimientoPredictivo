@@ -20,16 +20,16 @@ import domainapp.modules.simple.dom.persona.TipoDeDocumento;
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Tecnico.class)
 public class TecnicoRepository {
 
-	public List<Tecnico> listar(){
+	public List<Tecnico> listarTecnicos(){
 		return repositoryService.allInstances(Tecnico.class);
 	}
 	
-	public Tecnico crear(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final Integer telefono,
+	public Tecnico crear(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final String telefono,
 			final String email, final LocalDate fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
-			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfecional,final Titulo titulo
+			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfesional,final Titulo titulo
 			) {
 		final Tecnico object=new Tecnico(name, apellido,documento, tipoDocumento,telefono,email,fechaNacimiento,estadoCivil,domicilio,numeroEmpleado,
-				sectorTrabajo,obraSocial,art,matriculaProfecional,titulo);
+				sectorTrabajo,obraSocial,art,matriculaProfesional,titulo);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;

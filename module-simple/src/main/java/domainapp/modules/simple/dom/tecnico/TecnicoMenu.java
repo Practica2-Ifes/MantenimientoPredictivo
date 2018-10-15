@@ -30,7 +30,7 @@ public class TecnicoMenu {
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar Todos los Tecnicos")
 	@MemberOrder(sequence = "1")
 	public List<Tecnico> listar(){
-		return tecnicoRepository.listar();
+		return tecnicoRepository.listarTecnicos();
 	}
 	
 	public List<Domicilio> choices8Crear() {
@@ -45,7 +45,7 @@ public class TecnicoMenu {
 			@ParameterLayout(named = "Apellido") final String apellido,
 			@ParameterLayout(named = "Documento") final Integer documento,
 			@ParameterLayout(named = "TipoDocumento") final TipoDeDocumento tipoDocumento,
-			@ParameterLayout(named = "Telefono") final Integer telefono,
+			@ParameterLayout(named = "Telefono") final String telefono,
 			@ParameterLayout(named = "Email") final String email,
 			@ParameterLayout(named = "Fecha Nacimiento") final LocalDate fechaNacimiento,
 			@ParameterLayout(named = "Estado Civil") final EstadoCivil estadoCivil, 
@@ -54,10 +54,10 @@ public class TecnicoMenu {
 			@ParameterLayout(named = "Sector de Trabajo") final SectorDeTrabajo sectorTrabajo,
 			@ParameterLayout(named = "Obra Social") final ObraSocial obraSocial,
 			@ParameterLayout(named = "Art") final ART art,
-			@ParameterLayout(named = "Matricula Profecional") final String matriculaProfecional,
+			@ParameterLayout(named = "Matricula Profesional") final String matriculaProfesional,
 			@ParameterLayout(named = "Titulo") final Titulo titulo
 			) {
-		return tecnicoRepository.crear(name, apellido, documento, tipoDocumento, telefono, email, fechaNacimiento, estadoCivil, domicilio, numeroEmpleado, sectorTrabajo, obraSocial, art, matriculaProfecional, titulo);
+		return tecnicoRepository.crear(name, apellido, documento, tipoDocumento, telefono, email, fechaNacimiento, estadoCivil, domicilio, numeroEmpleado, sectorTrabajo, obraSocial, art, matriculaProfesional, titulo);
 	}
 	
 

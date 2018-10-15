@@ -21,7 +21,7 @@ import org.apache.isis.applib.services.title.TitleService;
 import lombok.AccessLevel;
 
 
-@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimientodb", table = "TipoInsumo")
+@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimiento", table = "TipoInsumo")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idTipo")
 @DomainObject(publishing = Publishing.ENABLED, auditing = Auditing.ENABLED)
 @lombok.Getter @lombok.Setter
@@ -32,7 +32,7 @@ public class TipoInsumo {
     @javax.jdo.annotations.Column(allowsNull = "false", length=100)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Descripcion: ")
+    @Title()
 	private String descripcion;
 	
     

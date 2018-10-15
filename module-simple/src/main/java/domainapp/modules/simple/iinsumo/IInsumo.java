@@ -31,7 +31,7 @@ import lombok.AccessLevel;
 @DomainObject(publishing = Publishing.ENABLED, auditing = Auditing.ENABLED)
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 @Discriminator(strategy = DiscriminatorStrategy.VALUE_MAP, column = "Insumos")
-@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimientodb", table = "Insumos")
+@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimiento", table = "Insumos")
 @javax.jdo.annotations.DatastoreIdentity(strategy = javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column = "idInsumos")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @lombok.Getter @lombok.Setter
@@ -53,26 +53,23 @@ public abstract class IInsumo implements Comparable<IInsumo> {
 	@Element(column="TIPOINSUMO_ID_EID")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Tipo Insumo: ")
 	@CollectionLayout
 	private List<TipoInsumo> tipoInsumo;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Precio Unidad: ")
     private double precio;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length=100)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Descripcion: ")
+    @Title()
     private String descripcion;
     
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Cantidad Usada: ")
     private int cantidad;
     
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
