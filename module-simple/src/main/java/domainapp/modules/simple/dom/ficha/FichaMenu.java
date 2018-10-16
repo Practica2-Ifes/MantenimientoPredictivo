@@ -13,6 +13,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.joda.time.LocalDate;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
+import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
+
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.FichaMenu", repositoryFor = Ficha.class)
 @DomainServiceLayout(named = "Fichas", menuOrder = "10.2")
@@ -25,16 +28,24 @@ public class FichaMenu {
 		return fichaRepository.listarFichas();
 	}
 	
+	public List<Tecnico> choices0Crear() {
+		return tecnicoRepository.listarTecnicos();
+	}
+	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Ficha")
 	@MemberOrder(sequence = "1.2")
 	public Ficha crear(
+			@ParameterLayout(named = "Tecnico") final Tecnico tecnico,
 			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
 			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
 			) {
-		return fichaRepository.crear(fechaCreacion, tipoFicha);
+		return fichaRepository.crear(fechaCreacion, tipoFicha, tecnico);
 	}
 	
 	@javax.inject.Inject
 	FichaRepository fichaRepository;
+	
+	@javax.inject.Inject
+	TecnicoRepository tecnicoRepository;
 }

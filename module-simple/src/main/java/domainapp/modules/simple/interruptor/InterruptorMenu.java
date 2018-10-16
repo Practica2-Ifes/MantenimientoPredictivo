@@ -23,14 +23,14 @@ public class InterruptorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todos los interruptores")
 	@MemberOrder(sequence = "1")
-	public List<Interruptor> listarInterruptores(){
+	public List<Interruptor> listar(){
 		return interruptorRepository.listarInterruptores();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Interruptor")
 	@MemberOrder(sequence = "1.1")
-	public UnidadDeMantenimiento create(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion")final String descripcion) {
 		return interruptorRepository.crear(estadoUnidad, descripcion);
 	}

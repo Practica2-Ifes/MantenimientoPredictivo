@@ -27,7 +27,7 @@ import com.google.common.collect.ComparisonChain;
 import lombok.AccessLevel;
 
 
-@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb", table = "Domicilio")
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento", table = "Domicilio")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idDireccion")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @javax.jdo.annotations.Unique(name="Domicilio_calle_UNQ", members = {"calle"})

@@ -1,14 +1,23 @@
 package domainapp.modules.simple.dom.ficha;
 
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
+import org.apache.isis.applib.annotation.Collection;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.message.MessageService;
@@ -18,8 +27,13 @@ import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJa
 import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
+import domainapp.modules.simple.dom.tecnico.Tecnico;
+import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
+import domainapp.modules.simple.iinsumo.IInsumo;
+import domainapp.modules.simple.iinsumo.IInsumoRepository;
+import domainapp.modules.simple.insumo.Insumo;
 
-@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimientodb")
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(auditing = Auditing.ENABLED)
@@ -27,16 +41,30 @@ import lombok.AccessLevel;
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
 public class Ficha implements Comparable<Ficha> {
+	
+    @javax.jdo.annotations.Persistent()
+	@Collection()
+	@Property(editing=Editing.ENABLED)
+	private SortedSet<InsumoFicha> insumos = new TreeSet<InsumoFicha>();
+	
+	@Column()
+	@Property(editing=Editing.ENABLED)
+	@PropertyLayout(named="Unidad de mantenimiento encendida")
+	private boolean estadoUnidad;
+	
+	@Column(allowsNull="false", name="TECNICO_ID")
+	@lombok.NonNull
+	@Property()
+	private Tecnico tecnico;
 
-
-    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @XmlJavaTypeAdapter(ForJaxb.class)
     @Title(prepend = "Ficha de: ")
     private LocalDate fechaCreacion;
     
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
+    @Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = ", ")
@@ -47,6 +75,26 @@ public class Ficha implements Comparable<Ficha> {
         final String title = titleService.titleOf(this);
         messageService.informUser(String.format("'%s' deleted", title));
         repositoryService.remove(this);
+    }
+    
+    @Action()
+    public Ficha agregarInsumo(
+    		@ParameterLayout(named="Insumo") final IInsumo insumo, 
+    		@ParameterLayout(named="Cantidad usada")final Integer cantidadUsada) {
+    	return fichaRepository.agregarInsumo(this, insumo, cantidadUsada);
+    }
+    
+    @Action()
+    public Ficha eliminarInsumo(final InsumoFicha insumo) {
+    	return fichaRepository.eliminarInsumo(this, insumo);
+    }
+    
+    public SortedSet<InsumoFicha> choices0EliminarInsumo() {
+    	return getInsumos();
+    }
+    
+    public List<IInsumo> choices0AgregarInsumo() {
+    	return insumoRepository.listarInsumos();
     }
 
 
@@ -80,10 +128,13 @@ public class Ficha implements Comparable<Ficha> {
     MessageService messageService;
     
     @javax.inject.Inject
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    FichaRepository fichRepository;
-    //endregion
-
-
+    @javax.jdo.annotations.NotPersistent
+    @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
+    FichaRepository fichaRepository;
+    
+    @javax.inject.Inject
+    @javax.jdo.annotations.NotPersistent
+    @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
+    IInsumoRepository insumoRepository;
 
 }

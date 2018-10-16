@@ -12,7 +12,7 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 
 public class TipoInsumoRepository {
 
-	public List<TipoInsumo> listarTipos(){
+	public List<TipoInsumo> listar(){
 		return repositoryService.allInstances(TipoInsumo.class);
 	}
 	
