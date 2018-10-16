@@ -60,6 +60,11 @@
 				<mb3:serviceAction objectType="simple.Transformador" id="crear">
 					<cpt:named>Crear Transformador</cpt:named>
 				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+		<mb3:menu>
+			<mb3:named>Insumos</mb3:named>
+			<mb3:section>
 				<mb3:serviceAction objectType="simple.IInsumos" id="listar">
 					<cpt:named>Listar todos los Insumos</cpt:named>
 				</mb3:serviceAction>
@@ -75,6 +80,7 @@
 				<mb3:serviceAction objectType="simple.TipoInsumo" id="crear">
 					<cpt:named>Crear Tipo de Insumo</cpt:named>
 				</mb3:serviceAction>
+			
 			</mb3:section>
 		</mb3:menu>
 		<mb3:menu>
