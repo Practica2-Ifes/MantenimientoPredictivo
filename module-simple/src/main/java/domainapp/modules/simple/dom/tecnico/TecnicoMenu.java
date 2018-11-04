@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.tecnico;
 
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,7 +61,21 @@ public class TecnicoMenu {
 		return tecnicoRepository.crear(name, apellido, documento, tipoDocumento, telefono, email, fechaNacimiento, estadoCivil, domicilio, numeroEmpleado, sectorTrabajo, obraSocial, art, matriculaProfesional, titulo);
 	}
 	
-
+	public String validateCrear(final String name, final String apellido,
+			final Integer documento, final TipoDeDocumento tipoDocumento, final String telefono, final String email, 
+			final LocalDate fechaNacimiento, final EstadoCivil estadoCivil,  final Domicilio domicilio, 
+			final int numeroEmpleado, final SectorDeTrabajo sectorTrabajo,
+			final ObraSocial obraSocial, final ART art,
+			final String matriculaProfesional, final Titulo titulo
+			) {
+	String mensaje="";
+	Calendar hoy = Calendar.getInstance();
+	int hoyDate = hoy.get(Calendar.YEAR);
+	if (fechaNacimiento == null || (hoyDate-fechaNacimiento.getYear()<18)) {
+		mensaje="la persona es menor de edad o esta mal cargada la fecha "+hoyDate+" "+fechaNacimiento.getYear();
+	}
+	return mensaje;
+	}
 	
 	@Inject
 	TecnicoRepository tecnicoRepository;

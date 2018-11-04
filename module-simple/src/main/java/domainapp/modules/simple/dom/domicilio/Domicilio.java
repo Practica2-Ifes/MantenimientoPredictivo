@@ -24,6 +24,8 @@ import org.apache.isis.applib.value.DateTime;
 
 import com.google.common.collect.ComparisonChain;
 
+import domainapp.modules.simple.dom.persona.EstadoCivil;
+import domainapp.modules.simple.dom.persona.Persona;
 import lombok.AccessLevel;
 
 
@@ -40,8 +42,15 @@ public class Domicilio implements Comparable<Domicilio> {
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(sequence="1",prepend = "Domicilio: ")
+    @Title(sequence="1",prepend = "Calle: ")
     private String calle;
+    
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "calle")
+	public Domicilio updateCalle(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "Calle") final String calle) {
+		setCalle(calle);
+		return this;
+	}
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
@@ -49,15 +58,36 @@ public class Domicilio implements Comparable<Domicilio> {
     @Title(sequence="2",append = ", ")
     private Integer altura;
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "altura")
+	public Domicilio updateAltura(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "Calle") final Integer altura) {
+		setAltura(altura);
+		return this;
+	}
+    
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     private String barrio;
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "barrio")
+	public Domicilio updateBarrio(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "Barrio") final String barrio) {
+		setBarrio(barrio);
+		return this;
+	}
+    
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     private Provincia provincia;
+    
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "provincia")
+	public Domicilio updateProvincia(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "Barrio") final Provincia provincia) {
+		setProvincia(provincia);
+		return this;
+	}
     
     @javax.jdo.annotations.Column(allowsNull = "false", length=40)
     @lombok.NonNull
@@ -65,11 +95,24 @@ public class Domicilio implements Comparable<Domicilio> {
     @Title(sequence="3")
     private String localidad;
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "localidad")
+	public Domicilio updateLocalidad(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "localidad") final String localidad) {
+		setLocalidad(localidad);
+		return this;
+	}
+    
     @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     private String departamento;
    
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "departamento")
+	public Domicilio updateDepartamento(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "departamento") final String departamento) {
+		setDepartamento(departamento);
+		return this;
+	}
     
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
     @Property(editing = Editing.ENABLED)
