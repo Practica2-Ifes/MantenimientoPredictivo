@@ -28,7 +28,8 @@ import domainapp.application.DomainAppApplicationModule;
  */
 public class DomainAppAppManifest extends AppManifestAbstract2 {
 
-    public static final Builder BUILDER = Builder.forModule(/*new DomainAppApplicationModule(),**/ new SecurityModule())
+    public static final Builder BUILDER = Builder.forModule(new DomainAppApplicationModule())
+    		.withAdditionalModules(SecurityModule.class)
             .withConfigurationPropertiesFile(DomainAppAppManifest.class,
                     "isis-non-changing.properties",
                     "authentication_shiro.properties",
