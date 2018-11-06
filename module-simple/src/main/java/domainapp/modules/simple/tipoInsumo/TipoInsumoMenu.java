@@ -12,8 +12,6 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import domainapp.modules.simple.insumo.Insumo;
-import domainapp.modules.simple.insumo.InsumoRepository;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.TipoInsumo", repositoryFor = TipoInsumo.class)
 @DomainServiceLayout(named = "TipoInsumo", menuOrder = "11")

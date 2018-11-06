@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.tecnico;
 
 
-import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;

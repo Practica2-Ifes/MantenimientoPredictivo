@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.domicilio;
 
 import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.Unique;
 import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.annotation.Action;
@@ -16,16 +15,12 @@ import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
-import org.apache.isis.applib.value.DateTime;
 
 import com.google.common.collect.ComparisonChain;
 
-import domainapp.modules.simple.dom.persona.EstadoCivil;
-import domainapp.modules.simple.dom.persona.Persona;
 import lombok.AccessLevel;
 
 
