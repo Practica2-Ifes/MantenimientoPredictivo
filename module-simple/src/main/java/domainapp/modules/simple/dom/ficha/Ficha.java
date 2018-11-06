@@ -28,10 +28,8 @@ import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
-import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.iinsumo.IInsumoRepository;
-import domainapp.modules.simple.insumo.Insumo;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")

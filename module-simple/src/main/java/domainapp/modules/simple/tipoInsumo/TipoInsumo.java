@@ -1,11 +1,7 @@
 package domainapp.modules.simple.tipoInsumo;
 
-import java.util.List;
 
-import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;

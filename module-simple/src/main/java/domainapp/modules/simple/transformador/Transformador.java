@@ -27,13 +27,13 @@ public class Transformador extends UnidadDeMantenimiento {
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Voltaje Anterior: ")
-	private double voltajeAnterior;
+	private Double voltajeAnterior;
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Voltaje Transformado: ")
-	private double voltajeTransformado;
+	private Double voltajeTransformado;
 	
 	public Transformador(EstadoUnidad estadoUnidad, String descripcion, double voltajeAnterior, double voltajeTransformado) {
 		super(estadoUnidad, descripcion);

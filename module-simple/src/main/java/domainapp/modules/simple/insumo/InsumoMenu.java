@@ -12,7 +12,6 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.tipoInsumo.TipoInsumo;
 import domainapp.modules.simple.tipoInsumo.TipoInsumoMenu;

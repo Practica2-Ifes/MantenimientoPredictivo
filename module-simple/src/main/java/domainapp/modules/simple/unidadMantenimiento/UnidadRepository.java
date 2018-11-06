@@ -8,7 +8,6 @@ import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 
-import domainapp.modules.simple.dom.domicilio.Domicilio;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = UnidadDeMantenimiento.class)
 public class UnidadRepository {

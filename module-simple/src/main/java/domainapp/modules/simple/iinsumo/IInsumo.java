@@ -59,7 +59,7 @@ public abstract class IInsumo implements Comparable<IInsumo> {
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    private double precio;
+    private Double precio;
     
     @javax.jdo.annotations.Column(allowsNull = "false", length=100)
     @lombok.NonNull
@@ -70,7 +70,7 @@ public abstract class IInsumo implements Comparable<IInsumo> {
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    private int cantidad;
+    private Integer cantidad;
     
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
     public void delete() {
