@@ -10,7 +10,7 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 
 import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.tipoInsumo.TipoInsumo;
-import domainapp.modules.simple.tipoInsumo.TipoInsumoMenu;
+import domainapp.modules.simple.tipoInsumo.TipoInsumoRepository;
 
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Insumo.class)
@@ -21,7 +21,7 @@ public class InsumoRepository {
 	}
 
 	public List<TipoInsumo> choices0Crear(){
-		return tipoInsumoMenu.listarTipos();
+		return tipoInsumoRepository.listar();
 	}
 	
 	@ActionLayout
@@ -43,5 +43,5 @@ public class InsumoRepository {
 	@javax.inject.Inject
 	ServiceRegistry2 serviceRegistry;
 	@javax.inject.Inject
-	TipoInsumoMenu tipoInsumoMenu;
+	TipoInsumoRepository tipoInsumoRepository;
 }

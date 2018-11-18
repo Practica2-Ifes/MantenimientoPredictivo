@@ -2,7 +2,6 @@ package domainapp.modules.simple.transformador;
 
 import java.util.List;
 
-import javax.inject.Inject;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
@@ -14,7 +13,6 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
@@ -25,14 +23,14 @@ public class TransformadorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todos los transformadores")
 	@MemberOrder(sequence = "1")
-	public List<Transformador> listarTransformadores(){
+	public List<Transformador> listar(){
 		return transformadorRepository.listarTransformadores();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Transformador")
 	@MemberOrder(sequence = "1.2")
-	public UnidadDeMantenimiento create(@ParameterLayout(named="Estado Unidad") final EstadoUnidad estadoUnidad,
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad") final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion") final String descripcion,
 										@ParameterLayout(named="Voltaje Anterior") final double voltajeAnterior,
 										@ParameterLayout(named="Voltaje Transformado") final double voltajeTransformado) {

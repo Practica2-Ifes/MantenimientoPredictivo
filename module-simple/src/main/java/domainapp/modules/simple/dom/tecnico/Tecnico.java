@@ -14,9 +14,13 @@ import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
+import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
@@ -29,19 +33,19 @@ import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
 import lombok.AccessLevel;
 
-@PersistenceCapable(identityType=IdentityType.DATASTORE, schema="mantenimientodb",table="empleados")
+@PersistenceCapable(identityType=IdentityType.DATASTORE, schema="mantenimiento",table="empleados")
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY,column="IdEmpleado")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(auditing = Auditing.ENABLED)
 @DomainObjectLayout()
 @Inheritance(strategy=InheritanceStrategy.NEW_TABLE)
 @lombok.Getter @lombok.Setter
-class Tecnico extends Persona implements Comparable<Tecnico>{
+public class Tecnico extends Persona implements Comparable<Tecnico>{
 	
 
-	public Tecnico(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final Integer telefono,
+	public Tecnico(final String name, final String apellido, final Integer documento, final TipoDeDocumento tipoDocumento, final String telefono,
 			final String email, final LocalDate fechaNacimiento,final EstadoCivil estadoCivil, final Domicilio domicilio, final int numeroEmpleado,
-			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfecional,final Titulo titulo) {
+			final SectorDeTrabajo sectorTrabajo, final ObraSocial obraSocial, final ART art,final String matriculaProfesional,final Titulo titulo) {
 		super();
 		setName(name);
 		setApellido(apellido);
@@ -56,7 +60,7 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 		setSectorDeTrabajo(sectorTrabajo);
 		setObraSocial(obraSocial);
 		setArt(art);
-		setMatriculaProfecional(matriculaProfecional);
+		setMatriculaProfesional(matriculaProfesional);
 		setTitulo(titulo);
 	}
 	public List<Tecnico> listarEmpleados(){
@@ -76,6 +80,12 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 		this.numeroEmpleado = numeroEmpleado;
 	}
 	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "numeroEmpleado")
+	public Tecnico updateNumeroEmpleado(
+			@Parameter() @ParameterLayout(named = "numero empleado") final int numeroEmpleado) {
+		setNumeroEmpleado(numeroEmpleado);
+		return this;
+	}
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
 	@Property()
@@ -88,6 +98,12 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 		this.sectorDeTrabajo = sectorDeTrabajo;
 	}
 	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "sectorDeTrabajo")
+	public Tecnico updateSectorDeTrabajo(
+			@Parameter() @ParameterLayout(named = "Sector de Trabajo") final SectorDeTrabajo sectorTrabajo) {
+		setSectorDeTrabajo(sectorDeTrabajo);
+		return this;
+	}
 	
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
@@ -101,6 +117,12 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 		this.obraSocial = obraSocial;
 	}
 	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "obraSocial")
+	public Tecnico updateObraSocial(
+			@Parameter() @ParameterLayout(named = "Obra Social") final ObraSocial obraSocial) {
+		setObraSocial(obraSocial);
+		return this;
+	}
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
 	@Property()
@@ -112,16 +134,30 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 	public void setArt(ART art) {
 		this.art = art;
 	}
+	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "art")
+	public Tecnico updateArt(
+			@Parameter() @ParameterLayout(named = "ART") final ART art) {
+		setArt(art);
+		return this;
+	}
 
 	@javax.jdo.annotations.Column(allowsNull = "false")
 	@Property()
-	private String matriculaProfecional;
+	private String matriculaProfesional;
 	
-	public String getMatriculaProfecional() {
-		return matriculaProfecional;
+	public String getMatriculaProfesional() {
+		return matriculaProfesional;
 	}
-	public void setMatriculaProfecional(String matriculaProfecional) {
-		this.matriculaProfecional = matriculaProfecional;
+	public void setMatriculaProfesional(String matriculaProfesional) {
+		this.matriculaProfesional = matriculaProfesional;
+	}
+	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "matriculaProfesional")
+	public Tecnico updateMatricula(
+			@Parameter() @ParameterLayout(named = "matricula") final String matricula) {
+		setMatriculaProfesional(matricula);
+		return this;
 	}
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
@@ -133,6 +169,13 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 	}
 	public void setTitulo(Titulo titulo) {
 		this.titulo = titulo;
+	}
+	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "titulo")
+	public Tecnico updateTirulo(
+			@Parameter() @ParameterLayout(named = "titulo") final Titulo titulo) {
+		setTitulo(titulo);
+		return this;
 	}
 
 	// region > delete (action)
@@ -148,6 +191,16 @@ class Tecnico extends Persona implements Comparable<Tecnico>{
 			// TODO Auto-generated method stub
 			return 0;
 		}
+		
+//		public String validateFechaNacimiento() {
+//		String mensaje="";
+//		Calendar hoy = Calendar.getInstance();
+//		int hoyDate = hoy.getTime().getYear();
+//		if (getFechaNacimiento() == null && (hoyDate-getFechaNacimiento().getYear()<18)) {
+//			mensaje="la persona es menor de edad o esta mal cargada la fecha";
+//		}
+//		return mensaje;
+//	}
 
 	@Inject
 	@javax.jdo.annotations.NotPersistent

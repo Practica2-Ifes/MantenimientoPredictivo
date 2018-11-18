@@ -12,8 +12,6 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import domainapp.modules.simple.insumo.Insumo;
-import domainapp.modules.simple.insumo.InsumoRepository;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.TipoInsumo", repositoryFor = TipoInsumo.class)
 @DomainServiceLayout(named = "TipoInsumo", menuOrder = "11")
@@ -22,15 +20,15 @@ public class TipoInsumoMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar Tipos")
 	@MemberOrder(sequence = "1")
-	public List<TipoInsumo> listarTipos(){
-		return tipoRepository.listarTipos();
+	public List<TipoInsumo> listar(){
+		return tipoRepository.listar();
 	}
 	
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Tipo")
 	@MemberOrder(sequence = "1.2")
-	public TipoInsumo create(@ParameterLayout(named="Descripcion") final String descripcion) {
+	public TipoInsumo crear(@ParameterLayout(named="Descripcion") final String descripcion) {
 		return tipoRepository.crear(descripcion);
 	}
 	

@@ -19,7 +19,7 @@ public class UnidadMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar todas las Unidades")
 	@MemberOrder(sequence = "1")
-	public List<UnidadDeMantenimiento> listarUnidades(){
+	public List<UnidadDeMantenimiento> listar(){
 		return unidadRepository.listarUnidades();
 	}
 	

@@ -14,7 +14,7 @@ import org.apache.isis.applib.annotation.Title;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
-@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimientodb", table = "Unidades")
+@javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimiento", table = "Unidades")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idTransformador")
 @DomainObject(publishing = Publishing.ENABLED, auditing = Auditing.ENABLED)
 @Inheritance(strategy = InheritanceStrategy.SUPERCLASS_TABLE)
@@ -27,13 +27,13 @@ public class Transformador extends UnidadDeMantenimiento {
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Voltaje Anterior: ")
-	private double voltajeAnterior;
+	private Double voltajeAnterior;
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Voltaje Transformado: ")
-	private double voltajeTransformado;
+	private Double voltajeTransformado;
 	
 	public Transformador(EstadoUnidad estadoUnidad, String descripcion, double voltajeAnterior, double voltajeTransformado) {
 		super(estadoUnidad, descripcion);

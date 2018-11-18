@@ -35,12 +35,4 @@ public class PersonaRepository {
 	@javax.inject.Inject
 	RepositoryService repositoryService;
 
-//	@javax.inject.Inject
-//	IsisJdoSupport isisJdoSupport;
-//	
-//	@javax.inject.Inject
-//	ServiceRegistry2 serviceRegistry;
-//va en la que hereda
-
-
 }
