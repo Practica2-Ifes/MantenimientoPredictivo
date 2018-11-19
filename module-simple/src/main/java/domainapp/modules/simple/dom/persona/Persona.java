@@ -18,12 +18,10 @@
  */
 package domainapp.modules.simple.dom.persona;
 
-<<<<<<< HEAD
-=======
+
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
->>>>>>> 2ed4dcfc2301591a816543e8122c1542048c991b
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
@@ -179,8 +177,7 @@ public abstract class Persona {
 		return this;
 	}
 
-<<<<<<< HEAD
-=======
+
 	@Column(allowsNull = "false")
 	@Property(editing = Editing.DISABLED)
 	@PropertyLayout(named = "Estado Civil")
@@ -192,7 +189,6 @@ public abstract class Persona {
 		setEstadoCivil(estadoCivil);
 		return this;
 	}
->>>>>>> 2ed4dcfc2301591a816543e8122c1542048c991b
 
 	@Column(allowsNull = "false", name = "DOMICILIO_ID")
 	@Property(editing = Editing.DISABLED)

@@ -29,7 +29,7 @@ public class FichaMenu {
 	}
 	
 	public List<Tecnico> choices0Crear() {
-		return tecnicoRepository.listarTecnicos();
+		return tecnicoRepository.listarTecnico();
 	}
 	
 	@Action(semantics = SemanticsOf.SAFE)

@@ -33,6 +33,22 @@ import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
 import lombok.AccessLevel;
 
+
+@javax.jdo.annotations.Queries({
+	@javax.jdo.annotations.Query(
+	        name = "listarTecnico", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.tecnico.Tecnico "
+	                + "WHERE sectorDeTrabajo == 'mantenimiento' "),
+	
+	@javax.jdo.annotations.Query(
+	        name = "listarAdministrativo", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.tecnico.Tecnico "
+	                + "WHERE sectorDeTrabajo == 'administracion' ")
+})
+
+
 @PersistenceCapable(identityType=IdentityType.DATASTORE, schema="mantenimiento",table="empleados")
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY,column="IdEmpleado")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")

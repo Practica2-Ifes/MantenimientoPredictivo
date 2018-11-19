@@ -23,7 +23,9 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.repository.RepositoryService;
+
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Persona.class)
 public class PersonaRepository {
@@ -31,6 +33,7 @@ public class PersonaRepository {
 	public List<Persona> listarPersonas() {
 		return repositoryService.allInstances(Persona.class);
 	}
+
 
 	@javax.inject.Inject
 	RepositoryService repositoryService;

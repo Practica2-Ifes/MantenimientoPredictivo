@@ -20,18 +20,25 @@ import org.joda.time.LocalDate;
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
 import domainapp.modules.simple.dom.persona.EstadoCivil;
+import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
 
 @DomainService(nature=NatureOfService.VIEW_MENU_ONLY, repositoryFor=Tecnico.class, objectType="simple.TecnicoMenu")
 @DomainServiceLayout(named="Tecnicos",menuOrder="10.1")
 public class TecnicoMenu {
 	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named= "Listar Tecnicos")
+	@MemberOrder(sequence = "1")
+	public List<Tecnico> listarTecnico(){
+		return tecnicoRepository.listarTecnico();
+	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listar Todos los Tecnicos")
-	@MemberOrder(sequence = "1")
-	public List<Tecnico> listar(){
-		return tecnicoRepository.listarTecnicos();
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named= "Listar Administrativos")
+	@MemberOrder(sequence = "2")
+	public List<Tecnico> listarAdministrativo(){
+		return tecnicoRepository.listarAdministrativo();
 	}
 	
 	public List<Domicilio> choices8Crear() {
