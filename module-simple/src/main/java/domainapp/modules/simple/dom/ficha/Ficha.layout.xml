@@ -19,9 +19,10 @@
                 <cpt:property id="datanucleusIdLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionTimestamp" hidden="EVERYWHERE" />
-                <cpt:property id="estadoUnidad"/>
+                <cpt:property id="unidades"/>
+                <cpt:property id="insumos"/>                                      
                 <cpt:property id="fechaCreacion"/>
-                <cpt:property id="fichRepository"/>
+                <cpt:property id="fichaRepository"/>
                 <cpt:property id="tecnico"/>
                 <cpt:property id="tipoDeFicha"/>
             </cpt:fieldSet>

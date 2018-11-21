@@ -12,6 +12,9 @@ import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.iinsumo.IInsumo;
+import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
+import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
+import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Ficha.class)
 public class FichaRepository {
@@ -28,12 +31,28 @@ public class FichaRepository {
 		return ficha;
 	}
 	
+	public Ficha agregarUnidad(final Ficha ficha, final UnidadDeMantenimiento unidad,final Integer horasUso, final EstadoUnidad estadoUnidad) {
+		SortedSet<UnidadFicha> unidades = ficha.getUnidades();
+		UnidadFicha unidadFicha = new UnidadFicha(unidad, estadoUnidad, horasUso);
+		unidades.add(unidadFicha);
+		ficha.setUnidades(unidades);
+		return ficha;
+	}
+	
 	public Ficha eliminarInsumo(final Ficha ficha, final InsumoFicha insumo) {
 		SortedSet<InsumoFicha> insumos = ficha.getInsumos();
 		insumos.remove(insumo);
 		ficha.setInsumos(insumos);
 		return ficha;
 	}
+	
+	public Ficha eliminarUnidad(final Ficha ficha, final UnidadFicha unidad) {
+		SortedSet<UnidadFicha> unidades = ficha.getUnidades();
+		unidades.remove(unidad);
+		ficha.setUnidades(unidades);
+		return ficha;
+	}
+	
 	
 	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha, final Tecnico tecnico) {
 		final Ficha object = new Ficha(tecnico, fechaCreacion, tipoFicha);
@@ -49,5 +68,8 @@ public class FichaRepository {
 	
 	@javax.inject.Inject
 	ServiceRegistry2 serviceRegistry;
+	
+	@javax.inject.Inject
+	UnidadRepository unidades;
 	
 }
