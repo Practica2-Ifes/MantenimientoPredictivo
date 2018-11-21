@@ -15,6 +15,9 @@ import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
+import domainapp.modules.simple.tipoInsumo.TipoInsumo;
+import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
+import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
 
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.FichaMenu", repositoryFor = Ficha.class)
@@ -48,4 +51,7 @@ public class FichaMenu {
 	
 	@javax.inject.Inject
 	TecnicoRepository tecnicoRepository;
+	
+	@javax.inject.Inject
+	UnidadRepository unidades;
 }
