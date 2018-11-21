@@ -5,12 +5,18 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
+import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Publishing;
+import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
@@ -30,8 +36,14 @@ public class Generador extends UnidadDeMantenimiento {
 
 	@javax.jdo.annotations.Column(allowsNull = "false")
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Consumo Energetico: ")
     private double consumoEnergetico;
+	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "consumoEnergetico")
+	public Generador updateConsumoEnergetico(
+			@Parameter() @ParameterLayout(named = "Consumo Energetico") final double consumoEnergetico) {
+		setConsumoEnergetico(consumoEnergetico);
+		return this;
+	}
 	
 	@Override
 	public int compareTo(UnidadDeMantenimiento o) {

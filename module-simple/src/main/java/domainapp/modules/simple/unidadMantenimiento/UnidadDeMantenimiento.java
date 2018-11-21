@@ -9,7 +9,10 @@ import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
+import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
@@ -18,6 +21,7 @@ import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 import lombok.AccessLevel;
 
 @DomainObject(publishing = Publishing.ENABLED, auditing = Auditing.ENABLED)
@@ -36,11 +40,25 @@ public abstract class UnidadDeMantenimiento implements Comparable<UnidadDeManten
     @Title(prepend = "Estado Unidad: ")
     private EstadoUnidad estadoUnidad;
     
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "estadoUnidad")
+	public UnidadDeMantenimiento updateEstadoUnidad(
+			@Parameter() @ParameterLayout(named = "Estado Unidad") final EstadoUnidad estadoUnidad) {
+		setEstadoUnidad(estadoUnidad);
+		return this;
+	}
+    
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Descripcion: ")
+    @Title(prepend = ", Descripcion: ")
     private String descripcion;
+    
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "descripcion")
+	public UnidadDeMantenimiento updateDescripcion(
+			@Parameter() @ParameterLayout(named = "Descripcion") final String descripcion) {
+		setDescripcion(descripcion);
+		return this;
+	}
     
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
     public void delete() {
