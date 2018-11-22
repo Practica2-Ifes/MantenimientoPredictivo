@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.ficha;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -20,7 +21,10 @@ import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.annotation.Publishing;
@@ -51,7 +55,7 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.Persistent()
 	@Collection()
 	@Property(editing=Editing.ENABLED)
-	private SortedSet<InsumoFicha> insumos = new TreeSet<InsumoFicha>();
+	private List<InsumoFicha> insumos = new ArrayList<InsumoFicha>();
 	
 //	@Column()
 //	@Property(editing=Editing.ENABLED)
@@ -61,7 +65,7 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.Persistent()
 	@Collection()
 	@Property(editing=Editing.ENABLED)
-	private SortedSet<UnidadFicha> unidades = new TreeSet<UnidadFicha>();
+	private List<UnidadFicha> unidades = new ArrayList<UnidadFicha>();
     
 	@Column(allowsNull="false", name="TECNICO_ID")
 	@lombok.NonNull
@@ -91,16 +95,21 @@ public class Ficha implements Comparable<Ficha> {
     @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "insumos")
     public Ficha agregarInsumo(
     		@ParameterLayout(named="Insumo") final IInsumo insumo, 
-    		@ParameterLayout(named="Cantidad usada")final Integer cantidadUsada) {
-    	return fichaRepository.agregarInsumo(this, insumo, cantidadUsada);
+    		@ParameterLayout(named="Cantidad usada")final Integer cantidadUsada)
+    {
+    	String descripcion= insumo.getDescripcion();
+    	return fichaRepository.agregarInsumo(this, insumo, descripcion, cantidadUsada);
     }
     
     @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "unidades")
     public Ficha agregarUnidad(
     		@ParameterLayout(named="Unidad") final UnidadDeMantenimiento unidad, 
     		@ParameterLayout(named="Horas") final Integer horasUso, 
-    		@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad) {
-    	return fichaRepository.agregarUnidad(this, unidad, horasUso, estadoUnidad);
+    		@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad)
+
+    {
+    	String descripcion=unidad.getDescripcion();
+    	return fichaRepository.agregarUnidad(this, unidad, horasUso,descripcion, estadoUnidad);
     }
     
     
@@ -114,11 +123,11 @@ public class Ficha implements Comparable<Ficha> {
     	return fichaRepository.eliminarUnidad(this, unidad);
     }
     
-    public SortedSet<InsumoFicha> choices0EliminarInsumo() {
+    public List<InsumoFicha> choices0EliminarInsumo() {
     	return getInsumos();
     }
     
-    public SortedSet<UnidadFicha> choices0EliminarUnidad() {
+    public List<UnidadFicha> choices0EliminarUnidad() {
     	return getUnidades();
     }
     

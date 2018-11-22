@@ -7,7 +7,9 @@ import javax.jdo.annotations.VersionStrategy;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.Title;
 
 import domainapp.modules.simple.iinsumo.IInsumo;
 
@@ -24,6 +26,12 @@ public class InsumoFicha implements Comparable<InsumoFicha>{
 	@lombok.NonNull
 	@Property()
 	private IInsumo insumoUsado;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(sequence="Unidad: ")
+	private String descripcion;
 	
 	@Column()
 	@lombok.NonNull

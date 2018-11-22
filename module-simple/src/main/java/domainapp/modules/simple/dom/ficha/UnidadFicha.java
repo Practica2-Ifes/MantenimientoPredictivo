@@ -14,6 +14,7 @@ import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 
@@ -34,15 +35,23 @@ public class UnidadFicha implements Comparable<UnidadFicha>{
 	@lombok.NonNull
 	@Property()
     private UnidadDeMantenimiento unidad;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(sequence="Unidad: ")
+	private String descripcion;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
+//	@Title(prepend="Estado Unidad: ")
 	private EstadoUnidad estadoUnidad;
     
 	@Column()
 	@lombok.NonNull
 	@Property()
+//	@Title(prepend="Horas de Uso: ")
     private Integer horasUso;
 	
 	@Override

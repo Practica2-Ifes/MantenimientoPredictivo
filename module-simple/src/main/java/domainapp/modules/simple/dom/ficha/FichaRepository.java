@@ -23,31 +23,31 @@ public class FichaRepository {
 		return repositoryService.allInstances(Ficha.class);
 	}
 	
-	public Ficha agregarInsumo(final Ficha ficha, final IInsumo insumo, final Integer cantidadUsada) {
-		SortedSet<InsumoFicha> insumos = ficha.getInsumos();
-		InsumoFicha insumoFicha = new InsumoFicha(insumo, cantidadUsada);
+	public Ficha agregarInsumo(final Ficha ficha, final IInsumo insumo, final String descripcion, final Integer cantidadUsada) {
+		List<InsumoFicha> insumos = ficha.getInsumos();
+		InsumoFicha insumoFicha = new InsumoFicha(insumo, descripcion, cantidadUsada);
 		insumos.add(insumoFicha);
 		ficha.setInsumos(insumos);
 		return ficha;
 	}
 	
-	public Ficha agregarUnidad(final Ficha ficha, final UnidadDeMantenimiento unidad,final Integer horasUso, final EstadoUnidad estadoUnidad) {
-		SortedSet<UnidadFicha> unidades = ficha.getUnidades();
-		UnidadFicha unidadFicha = new UnidadFicha(unidad, estadoUnidad, horasUso);
+	public Ficha agregarUnidad(final Ficha ficha, final UnidadDeMantenimiento unidad,final Integer horasUso, final String descripcion, final EstadoUnidad estadoUnidad) {
+		List<UnidadFicha> unidades = ficha.getUnidades();
+		UnidadFicha unidadFicha = new UnidadFicha(unidad, descripcion, estadoUnidad, horasUso);
 		unidades.add(unidadFicha);
 		ficha.setUnidades(unidades);
 		return ficha;
 	}
 	
 	public Ficha eliminarInsumo(final Ficha ficha, final InsumoFicha insumo) {
-		SortedSet<InsumoFicha> insumos = ficha.getInsumos();
+		List<InsumoFicha> insumos = ficha.getInsumos();
 		insumos.remove(insumo);
 		ficha.setInsumos(insumos);
 		return ficha;
 	}
 	
 	public Ficha eliminarUnidad(final Ficha ficha, final UnidadFicha unidad) {
-		SortedSet<UnidadFicha> unidades = ficha.getUnidades();
+		List<UnidadFicha> unidades = ficha.getUnidades();
 		unidades.remove(unidad);
 		ficha.setUnidades(unidades);
 		return ficha;

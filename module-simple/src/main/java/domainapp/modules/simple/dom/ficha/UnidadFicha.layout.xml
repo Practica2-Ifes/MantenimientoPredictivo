@@ -8,10 +8,8 @@
     </bs3:row>
     <bs3:row>
         <bs3:col span="12" unreferencedCollections="true">
-            <cpt:collection defaultView="table" id="fichas">
-        		<cpt:named>Ficha</cpt:named>
-        		<cpt:action id="agregarTecnico" />
-        		<cpt:action id="eliminarTecnico" />
+            <cpt:collection defaultView="table" id="unidadFicha">
+        		<cpt:named>UnidadFicha</cpt:named>
             </cpt:collection>
         </bs3:col>
         <bs3:col span="12">
@@ -19,12 +17,10 @@
                 <cpt:property id="datanucleusIdLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionTimestamp" hidden="EVERYWHERE" />           
-                <cpt:property id="unidades"/>
-                <cpt:property id="insumos"/>                                      
-                <cpt:property id="fechaCreacion"/>
-                <cpt:property id="fichaRepository"/>
-                <cpt:property id="tecnico"/>
-                <cpt:property id="tipoDeFicha"/>
+                <cpt:property id="descripcion" hidden="EVERYWHERE"/>
+                <cpt:property id="unidad"/>        
+                <cpt:property id="estadoUnidad"/>        
+                <cpt:property id="horasUso"/>
             </cpt:fieldSet>
         </bs3:col>
     </bs3:row>
