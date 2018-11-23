@@ -5,12 +5,14 @@ import java.util.SortedSet;
 
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.tecnico.Tecnico;
+import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
@@ -21,6 +23,16 @@ public class FichaRepository {
 
 	public List<Ficha> listarFichas() {
 		return repositoryService.allInstances(Ficha.class);
+	}
+	
+	public List<Ficha> findByFecha(LocalDate fechaCreacion) {
+		return repositoryService.allMatches(new QueryDefault<>(Ficha.class, "fichasDia", "fechaCreacion", fechaCreacion));
+
+	}
+	
+	public List<Ficha> findByTipo(TipoDeFicha tipoDeFicha) {
+		return repositoryService.allMatches(new QueryDefault<>(Ficha.class, "tipoBusqueda", "tipoDeFicha", tipoDeFicha));
+
 	}
 	
 	public Ficha agregarInsumo(final Ficha ficha, final IInsumo insumo, final String descripcion, final Integer cantidadUsada) {

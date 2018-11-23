@@ -9,6 +9,7 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -45,6 +46,20 @@ import domainapp.modules.simple.iinsumo.IInsumoRepository;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
+
+@javax.jdo.annotations.Queries({
+	@javax.jdo.annotations.Query(
+	        name = "fichasDia", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"
+					+ " WHERE fechaCreacion == :fechaCreacion"),
+	@javax.jdo.annotations.Query(
+	        name = "tipoBusqueda", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"
+					+ " WHERE tipoDeFicha == :tipoDeFicha")
+
+})
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
@@ -188,6 +203,28 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
     @Property(editing = Editing.ENABLED)
     private String observaciones;
+    
+    @Column(allowsNull = "false")
+    @Property(editing = Editing.ENABLED)
+    @NotPersistent
+    private LocalDate fechaBusqueda;
+    
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith="fechaBusqueda")
+	public List<Ficha> findByFecha() {
+		return fichaRepository.findByFecha(fechaBusqueda);
+	}
+    
+	
+    @Column(allowsNull = "false")
+    @Property(editing = Editing.ENABLED)
+    @NotPersistent
+    private TipoDeFicha tipoBusqueda;
+    
+    
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith="tipoBusqueda")
+	public List<Ficha> findByTipo() {
+		return fichaRepository.findByTipo(tipoBusqueda);
+	}
     
 
     //region > toString, compareTo
