@@ -21,9 +21,8 @@ import domainapp.modules.simple.iinsumo.IInsumo;
 @lombok.Getter @lombok.Setter
 public class Insumo extends IInsumo {
 
-	public Insumo(List<domainapp.modules.simple.tipoInsumo.TipoInsumo> tipoInsumo, double precio, String descripcion,
-			int cantidad) {
-		super(tipoInsumo, precio, descripcion, cantidad);
+	public Insumo(List<domainapp.modules.simple.tipoInsumo.TipoInsumo> tipoInsumo, double precio, String descripcion) {
+		super(tipoInsumo, precio, descripcion);
 		// TODO Auto-generated constructor stub
 	}
 

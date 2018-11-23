@@ -41,12 +41,11 @@ import lombok.AccessLevel;
 @lombok.Getter @lombok.Setter
 public abstract class IInsumo implements Comparable<IInsumo> {
 
-    public IInsumo(List<TipoInsumo> tipoInsumo, double precio, String descripcion, int cantidad) {
+    public IInsumo(List<TipoInsumo> tipoInsumo, double precio, String descripcion) {
 		super();
 		this.tipoInsumo = tipoInsumo;
 		this.precio = precio;
 		this.descripcion = descripcion;
-		this.cantidad = cantidad;
 	}
 
 
@@ -80,17 +79,6 @@ public abstract class IInsumo implements Comparable<IInsumo> {
 	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "descripcion")
 	public IInsumo updateDescripcion(@ParameterLayout(named = "Descripcion") final String descripcion) {
 		setDescripcion(descripcion);
-		return this;
-	}
-    
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    private Integer cantidad;
-    
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "cantidad")
-	public IInsumo updateCantidad(@ParameterLayout(named = "Cantidad") final Integer cantidad) {
-		setCantidad(cantidad);
 		return this;
 	}
     

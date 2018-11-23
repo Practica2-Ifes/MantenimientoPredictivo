@@ -37,9 +37,8 @@ public class InsumoMenu {
 	@MemberOrder(sequence = "1.2")
 	public IInsumo crear(@ParameterLayout(named="Tipo Insumo") final List<TipoInsumo> tipoInsumo,
 						  @ParameterLayout(named="Precio") final double precio,
-						  @ParameterLayout(named="Descripcion") final String descripcion,
-						  @ParameterLayout(named="Cantidad") final int cantidad) {
-		return insumoRepository.crear(tipoInsumo, descripcion, precio, cantidad);
+						  @ParameterLayout(named="Descripcion") final String descripcion) {
+		return insumoRepository.crear(tipoInsumo, descripcion, precio);
 	}
 	
 	@javax.inject.Inject
