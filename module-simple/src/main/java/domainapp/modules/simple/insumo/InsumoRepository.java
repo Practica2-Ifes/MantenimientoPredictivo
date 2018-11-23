@@ -28,9 +28,8 @@ public class InsumoRepository {
 	public IInsumo crear(
 			final List<TipoInsumo> tipoInsumo,
 			final String descripcion,
-			final double precio,
-			final int cantidad) {
-		final IInsumo object= new Insumo(tipoInsumo, precio, descripcion, cantidad);
+			final double precio) {
+		final IInsumo object= new Insumo(tipoInsumo, precio, descripcion);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
