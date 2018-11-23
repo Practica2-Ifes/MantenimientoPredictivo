@@ -7,10 +7,10 @@ import javax.jdo.annotations.VersionStrategy;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.iinsumo.IInsumo;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
@@ -20,28 +20,39 @@ import domainapp.modules.simple.iinsumo.IInsumo;
 @DomainObjectLayout()  // causes UI events to be triggered
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
-public class InsumoFicha implements Comparable<InsumoFicha>{
-	
-	@Column(name="INSUMO_ID")
-	@lombok.NonNull
-	@Property()
-	private IInsumo insumoUsado;
-	
-	@Column()
-	@lombok.NonNull
-	@Property()
-	@Title(prepend="Insumo: ")
-	private String descripcion;
-	
-	@Column()
-	@lombok.NonNull
-	@Property()
-	private Integer cantidadUsada;
+public class TecnicoFicha implements Comparable<TecnicoFicha>{
 
+	@Column(name="TECNICO_ID")
+	@lombok.NonNull
+	@Property()
+	private Tecnico tecnico;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(prepend="Nombre: ")
+	private String nombre;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(prepend=", Apellido: ")
+	private String apellido;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(prepend=", Documento: ")
+	private Integer documento;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	private Integer horasTrabajo;
+	
 	@Override
-	public int compareTo(InsumoFicha o) {
+	public int compareTo(TecnicoFicha o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }

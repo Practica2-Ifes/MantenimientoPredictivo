@@ -8,8 +8,8 @@
     </bs3:row>
     <bs3:row>
         <bs3:col span="12" unreferencedCollections="true">
-            <cpt:collection defaultView="table" id="fichas">
-        		<cpt:named>Ficha</cpt:named>
+            <cpt:collection defaultView="table" id="insumoFicha">
+        		<cpt:named>InsumoFicha</cpt:named>
             </cpt:collection>
         </bs3:col>
         <bs3:col span="12">
@@ -17,12 +17,9 @@
                 <cpt:property id="datanucleusIdLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionLong" hidden="EVERYWHERE" />
                 <cpt:property id="datanucleusVersionTimestamp" hidden="EVERYWHERE" />           
-                <cpt:property id="unidades"/>
-                <cpt:property id="insumos"/>                                      
-                <cpt:property id="fechaCreacion"/>
-                <cpt:property id="fichaRepository"/>
-                <cpt:property id="tecnicos"/>
-                <cpt:property id="tipoDeFicha"/>
+                <cpt:property id="descripcion" hidden="EVERYWHERE"/>
+                <cpt:property id="insumoUsado"/>                                      
+                <cpt:property id="cantidadUsada"/>
             </cpt:fieldSet>
         </bs3:col>
     </bs3:row>
