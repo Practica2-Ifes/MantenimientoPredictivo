@@ -204,25 +204,28 @@ public class Ficha implements Comparable<Ficha> {
     @Property(editing = Editing.ENABLED)
     private String observaciones;
     
-    @Column(allowsNull = "false")
-    @Property(editing = Editing.ENABLED)
-    @NotPersistent
-    private LocalDate fechaBusqueda;
+//    @Column(allowsNull = "false")
+//    @Property(editing = Editing.ENABLED)
+//    @NotPersistent
+//    private LocalDate fechaBusqueda;
     
 	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith="fechaBusqueda")
-	public List<Ficha> findByFecha() {
+	public List<Ficha> findByFecha(
+			@ParameterLayout(named = "Fecha para Busqueda: ") final LocalDate fechaBusqueda) {
+	
 		return fichaRepository.findByFecha(fechaBusqueda);
 	}
     
 	
-    @Column(allowsNull = "false")
-    @Property(editing = Editing.ENABLED)
-    @NotPersistent
-    private TipoDeFicha tipoBusqueda;
+//    @Column(allowsNull = "false")
+//    @Property(editing = Editing.ENABLED)
+//    @NotPersistent
+//    private TipoDeFicha tipoBusqueda;
     
     
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith="tipoBusqueda")
-	public List<Ficha> findByTipo() {
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED)
+	public List<Ficha> findByTipo(
+			@ParameterLayout(named = "Tipo para Busqueda") final TipoDeFicha tipoBusqueda) {
 		return fichaRepository.findByTipo(tipoBusqueda);
 	}
     
