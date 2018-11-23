@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
@@ -22,11 +24,22 @@ public class GeneradorRepository {
 	public UnidadDeMantenimiento crear(
 			final EstadoUnidad estadoUnidad,
 			final String descripcion,
-			final double consumoEnergetico) {
+			final Double consumoEnergetico) {
 		final UnidadDeMantenimiento object = new Generador(estadoUnidad, descripcion, consumoEnergetico);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
+	}
+	
+	
+	
+	public Double sumaConsumo() {
+		List<Generador> aux= repositoryService.allMatches(new QueryDefault<>(Generador.class, "sumarGasto"));
+		Double consumo=0.0;
+		for(int i=0; i<aux.size();i++) {
+			consumo= consumo+ aux.get(i).getConsumoEnergetico();
+		}
+		return consumo;
 	}
 	
 	

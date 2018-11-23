@@ -12,6 +12,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.query.QueryDefault;
 
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
@@ -27,12 +28,13 @@ public class GeneradorMenu {
 		return generadorRepository.listarGeneradores();
 	}
 	
+	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Generador")
-	@MemberOrder(sequence = "1.2")
+	@MemberOrder(sequence = "3")
 	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion")final String descripcion,
-										@ParameterLayout(named="Consumo Energetico")final double consumoEnergetico) {
+										@ParameterLayout(named="Consumo Energetico")final Double consumoEnergetico) {
 		return generadorRepository.crear(estadoUnidad, descripcion, consumoEnergetico);
 	}
 	

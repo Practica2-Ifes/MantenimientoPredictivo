@@ -1,5 +1,6 @@
 package domainapp.modules.simple.generador;
 
+import javax.inject.Inject;
 import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Inheritance;
@@ -19,7 +20,16 @@ import org.apache.isis.applib.annotation.Title;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
+import lombok.AccessLevel;
 
+
+@javax.jdo.annotations.Queries({
+	@javax.jdo.annotations.Query(
+	        name = "sumarGasto", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.generador.Generador"),
+
+})
 @javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimiento", table = "Unidades")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="idGenerador")
 @DomainObject(publishing = Publishing.ENABLED, auditing = Auditing.ENABLED)
@@ -36,13 +46,18 @@ public class Generador extends UnidadDeMantenimiento {
 
 	@javax.jdo.annotations.Column(allowsNull = "false")
     @Property() // editing disabled by default, see isis.properties
-    private double consumoEnergetico;
+    private Double consumoEnergetico;
 	
 	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "consumoEnergetico")
 	public Generador updateConsumoEnergetico(
-			@Parameter() @ParameterLayout(named = "Consumo Energetico") final double consumoEnergetico) {
+			@Parameter() @ParameterLayout(named = "Consumo Energetico: ") final double consumoEnergetico) {
 		setConsumoEnergetico(consumoEnergetico);
 		return this;
+	}
+	
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED)
+	public Double sumaConsumo() {
+		return generadorRepository.sumaConsumo();
 	}
 	
 	@Override
@@ -50,5 +65,11 @@ public class Generador extends UnidadDeMantenimiento {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	@Inject
+	@javax.jdo.annotations.NotPersistent
+    @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
+	GeneradorRepository generadorRepository;
 
 }
