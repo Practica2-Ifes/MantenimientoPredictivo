@@ -30,7 +30,7 @@ public class InsumoFicha implements Comparable<InsumoFicha>{
 	@Column()
 	@lombok.NonNull
 	@Property()
-	@Title(sequence="Unidad: ")
+	@Title(prepend="Insumo: ")
 	private String descripcion;
 	
 	@Column()

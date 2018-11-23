@@ -1,26 +1,17 @@
 package domainapp.modules.simple.dom.ficha;
 
-import java.util.List;
-
 import javax.jdo.annotations.Column;
-import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.Join;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.annotation.Auditing;
-import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.iinsumo.IInsumo;
-import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
-import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
@@ -29,33 +20,38 @@ import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 @DomainObjectLayout()  // causes UI events to be triggered
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
-public class UnidadFicha implements Comparable<UnidadFicha>{
+public class TecnicoFicha implements Comparable<TecnicoFicha>{
 
-	@Column(name="UNIDAD_ID")
+	@Column(name="TECNICO_ID")
 	@lombok.NonNull
 	@Property()
-    private UnidadDeMantenimiento unidad;
+	private Tecnico tecnico;
 	
 	@Column()
 	@lombok.NonNull
 	@Property()
-	@Title(prepend="Unidad: ")
-	private String descripcion;
-
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-//	@Title(prepend="Estado Unidad: ")
-	private EstadoUnidad estadoUnidad;
-    
+	@Title(prepend="Nombre: ")
+	private String nombre;
+	
 	@Column()
 	@lombok.NonNull
 	@Property()
-//	@Title(prepend="Horas de Uso: ")
-    private Integer horasUso;
+	@Title(prepend=", Apellido: ")
+	private String apellido;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	@Title(prepend=", Documento: ")
+	private Integer documento;
+	
+	@Column()
+	@lombok.NonNull
+	@Property()
+	private Integer horasTrabajo;
 	
 	@Override
-	public int compareTo(UnidadFicha o) {
+	public int compareTo(TecnicoFicha o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

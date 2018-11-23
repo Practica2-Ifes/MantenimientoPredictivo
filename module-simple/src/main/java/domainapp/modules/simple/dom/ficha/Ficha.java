@@ -37,7 +37,9 @@ import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJa
 import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
+import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
+import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.iinsumo.IInsumoRepository;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
@@ -67,10 +69,15 @@ public class Ficha implements Comparable<Ficha> {
 	@Property(editing=Editing.ENABLED)
 	private List<UnidadFicha> unidades = new ArrayList<UnidadFicha>();
     
-	@Column(allowsNull="false", name="TECNICO_ID")
-	@lombok.NonNull
-	@Property()
-	private Tecnico tecnico;
+    @javax.jdo.annotations.Persistent()
+	@Collection()
+	@Property(editing=Editing.ENABLED)
+	private List<TecnicoFicha> tecnicos = new ArrayList<TecnicoFicha>();
+    
+//	@Column(allowsNull="false", name="TECNICO_ID")
+//	@lombok.NonNull
+//	@Property()
+//	private Tecnico tecnico;
 
     @Column(allowsNull = "false")
     @lombok.NonNull
@@ -79,11 +86,25 @@ public class Ficha implements Comparable<Ficha> {
     @Title(prepend = "Ficha de: ")
     private LocalDate fechaCreacion;
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "fechaCreacion")
+	public Ficha updateFechaCreacion(
+			@ParameterLayout(named = "fechaCreacion") final LocalDate fechaCreacion) {
+		setFechaCreacion(fechaCreacion);
+		return this;
+	}
+    
     @Column(allowsNull = "false", length = 40)
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = ", ")
     private TipoDeFicha tipoDeFicha;
+    
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "tipoDeFicha")
+	public Ficha updateTipoFicha(
+			@Parameter(maxLength = 40) @ParameterLayout(named = "tipoDeFicha") final TipoDeFicha tipoDeFicha) {
+		setTipoDeFicha(tipoDeFicha);
+		return this;
+	}
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
     public void delete() {
@@ -112,6 +133,17 @@ public class Ficha implements Comparable<Ficha> {
     	return fichaRepository.agregarUnidad(this, unidad, horasUso,descripcion, estadoUnidad);
     }
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "tecnicos")
+    public Ficha agregarTecnico(
+    		@ParameterLayout(named="Tecnico") final Tecnico tecnico, 
+    		@ParameterLayout(named="Horas Trabajo") final Integer horasTrabajo) 
+    {
+    	String nombre=tecnico.getName();
+    	String apellido= tecnico.getApellido();
+    	Integer documento= tecnico.getDocumento();
+    	return fichaRepository.agregarTecnico(this, tecnico, nombre, apellido, documento, horasTrabajo);
+    }
+    
     
     @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "insumos")
     public Ficha eliminarInsumo(final InsumoFicha insumo) {
@@ -123,12 +155,21 @@ public class Ficha implements Comparable<Ficha> {
     	return fichaRepository.eliminarUnidad(this, unidad);
     }
     
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "tecnicos")
+    public Ficha eliminarTecnico(final TecnicoFicha tecnico) {
+    	return fichaRepository.eliminarTecnico(this, tecnico);
+    }
+    
     public List<InsumoFicha> choices0EliminarInsumo() {
     	return getInsumos();
     }
     
     public List<UnidadFicha> choices0EliminarUnidad() {
     	return getUnidades();
+    }
+    
+    public List<TecnicoFicha> choices0EliminarTecnico() {
+    	return getTecnicos();
     }
     
     public List<IInsumo> choices0AgregarInsumo() {
@@ -139,8 +180,15 @@ public class Ficha implements Comparable<Ficha> {
     	return unidadRepository.listarUnidades();
     }
     
+    public List<Tecnico> choices0AgregarTecnico() {
+    	return tecnicoReposiroty.listarTecnico();
+    }
     
-
+    
+    @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
+    @Property(editing = Editing.ENABLED)
+    private String observaciones;
+    
 
     //region > toString, compareTo
     @Override
@@ -155,10 +203,9 @@ public class Ficha implements Comparable<Ficha> {
     //endregion
 
 
-    public Ficha(Tecnico tecnico, LocalDate fechaCreacion,
+    public Ficha(LocalDate fechaCreacion,
 			TipoDeFicha tipoDeFicha) {
 		super();
-		this.tecnico = tecnico;
 		this.fechaCreacion = fechaCreacion;
 		this.tipoDeFicha = tipoDeFicha;
 	}
@@ -192,5 +239,10 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     UnidadRepository unidadRepository;
+    
+    @javax.inject.Inject
+    @javax.jdo.annotations.NotPersistent
+    @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
+    TecnicoRepository tecnicoReposiroty;
 
 }

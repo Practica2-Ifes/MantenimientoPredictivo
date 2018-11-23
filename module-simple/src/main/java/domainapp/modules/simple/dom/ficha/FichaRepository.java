@@ -39,6 +39,14 @@ public class FichaRepository {
 		return ficha;
 	}
 	
+	public Ficha agregarTecnico(final Ficha ficha, final Tecnico tecnico, final String nombre, final String apellido, final Integer documento, final Integer horasTrabajo) {
+		List<TecnicoFicha> tecnicos = ficha.getTecnicos();
+		TecnicoFicha tecnicoFicha = new TecnicoFicha(tecnico, nombre, apellido, documento, horasTrabajo);
+		tecnicos.add(tecnicoFicha);
+		ficha.setTecnicos(tecnicos);
+		return ficha;
+	}
+	
 	public Ficha eliminarInsumo(final Ficha ficha, final InsumoFicha insumo) {
 		List<InsumoFicha> insumos = ficha.getInsumos();
 		insumos.remove(insumo);
@@ -53,9 +61,16 @@ public class FichaRepository {
 		return ficha;
 	}
 	
+	public Ficha eliminarTecnico(final Ficha ficha, final TecnicoFicha tecnico) {
+		List<TecnicoFicha> tecnicos = ficha.getTecnicos();
+		tecnicos.remove(tecnico);
+		ficha.setTecnicos(tecnicos);
+		return ficha;
+	}
 	
-	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha, final Tecnico tecnico) {
-		final Ficha object = new Ficha(tecnico, fechaCreacion, tipoFicha);
+	
+	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha) {
+		final Ficha object = new Ficha(fechaCreacion, tipoFicha);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;

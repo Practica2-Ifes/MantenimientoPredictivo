@@ -31,19 +31,15 @@ public class FichaMenu {
 		return fichaRepository.listarFichas();
 	}
 	
-	public List<Tecnico> choices0Crear() {
-		return tecnicoRepository.listarTecnico();
-	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Ficha")
-	@MemberOrder(sequence = "1.2")
+	@MemberOrder(sequence = "2")
 	public Ficha crear(
-			@ParameterLayout(named = "Tecnico") final Tecnico tecnico,
 			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
 			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
 			) {
-		return fichaRepository.crear(fechaCreacion, tipoFicha, tecnico);
+		return fichaRepository.crear(fechaCreacion, tipoFicha);
 	}
 	
 	@javax.inject.Inject
