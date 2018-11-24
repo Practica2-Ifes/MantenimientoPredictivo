@@ -72,11 +72,6 @@ public class Ficha implements Comparable<Ficha> {
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<TecnicoFicha> tecnicos = new ArrayList<TecnicoFicha>();
-    
-//	@Column(allowsNull="false", name="TECNICO_ID")
-//	@lombok.NonNull
-//	@Property()
-//	private Tecnico tecnico;
 
     @Column(allowsNull = "false")
     @lombok.NonNull

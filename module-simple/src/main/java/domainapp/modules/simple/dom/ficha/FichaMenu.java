@@ -13,15 +13,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.joda.time.LocalDate;
 
-import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
-<<<<<<< HEAD
-import domainapp.modules.simple.tipoInsumo.TipoInsumo;
-import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
-=======
 import domainapp.modules.simple.notificacion.SelectStra;
->>>>>>>  fecha de realizacion #22
 
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.FichaMenu", repositoryFor = Ficha.class)
@@ -43,12 +37,8 @@ public class FichaMenu {
 			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
 			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
 			) {
-//<<<<<<< HEAD
-//		return fichaRepository.crear(fechaCreacion, tipoFicha);
-//=======
-		return fichaRepository.crear(fechaCreacion,tipoFicha, tecnico);
-//>>>>>>>  fecha de realizacion #22
-	}
+		return fichaRepository.crear(fechaCreacion,tipoFicha);
+}
 	
 	@javax.inject.Inject
 	FichaRepository fichaRepository;
@@ -57,12 +47,8 @@ public class FichaMenu {
 	TecnicoRepository tecnicoRepository;
 	
 	@javax.inject.Inject
-<<<<<<< HEAD
 	UnidadRepository unidades;
-=======
-	SelectStra selectStra;
 	
-	@javax.inject.Inject
-	SelectStra select;
->>>>>>>  fecha de realizacion #22
+	@javax.inject.Inject	
+	SelectStra selectStra;
 }

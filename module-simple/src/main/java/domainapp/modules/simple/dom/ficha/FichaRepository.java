@@ -1,8 +1,6 @@
 package domainapp.modules.simple.dom.ficha;
 
 import java.util.List;
-import java.util.SortedSet;
-
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
@@ -70,8 +68,8 @@ public class FichaRepository {
 		return ficha;
 	}
 	
-	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha, final Tecnico tecnico) {
-		final Ficha object = new Ficha(tecnico, fechaCreacion,tipoFicha);
+	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha) {
+		final Ficha object = new Ficha(fechaCreacion,tipoFicha);
 		LocalDate fechaRealizacion = select.CalcularFechaRealizacion(fechaCreacion, tipoFicha);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
