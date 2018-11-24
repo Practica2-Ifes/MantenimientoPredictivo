@@ -2,31 +2,22 @@ package domainapp.modules.simple.dom.ficha;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import javax.jdo.annotations.Column;
-import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.Join;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.Collection;
-import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
-import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
-import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
@@ -37,7 +28,6 @@ import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJa
 import org.joda.time.LocalDate;
 
 import lombok.AccessLevel;
-import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.iinsumo.IInsumo;
@@ -45,6 +35,7 @@ import domainapp.modules.simple.iinsumo.IInsumoRepository;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
+import domainapp.modules.simple.notificacion.SelectStra;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
@@ -54,7 +45,15 @@ import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
 @lombok.Getter @lombok.Setter
 public class Ficha implements Comparable<Ficha> {
 	
-    @javax.jdo.annotations.Persistent()
+	
+    public Ficha(LocalDate fechaCreacion, TipoDeFicha tipoDeFicha) {
+		super();
+		setFechaCreacion(fechaCreacion);
+		setFechaRealizarControl(SelectStra.CalcularFechaRealizacion(fechaCreacion, tipoDeFicha));
+		this.tipoDeFicha = tipoDeFicha;
+	}
+
+	@javax.jdo.annotations.Persistent()
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<InsumoFicha> insumos = new ArrayList<InsumoFicha>();
@@ -92,6 +91,14 @@ public class Ficha implements Comparable<Ficha> {
 		setFechaCreacion(fechaCreacion);
 		return this;
 	}
+
+    @Column(allowsNull="false")
+    @lombok.NonNull
+    @Property()
+    @XmlJavaTypeAdapter(ForJaxb.class)
+    @Title(prepend="Fecha de realizacion")
+    private LocalDate fechaRealizarControl;
+
     
     @Column(allowsNull = "false", length = 40)
     @lombok.NonNull
@@ -202,13 +209,6 @@ public class Ficha implements Comparable<Ficha> {
 	}
     //endregion
 
-
-    public Ficha(LocalDate fechaCreacion,
-			TipoDeFicha tipoDeFicha) {
-		super();
-		this.fechaCreacion = fechaCreacion;
-		this.tipoDeFicha = tipoDeFicha;
-	}
 	//region > injected services
     @javax.inject.Inject
     @javax.jdo.annotations.NotPersistent
@@ -234,7 +234,7 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     IInsumoRepository insumoRepository;
-    
+
     @javax.inject.Inject
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
@@ -244,5 +244,4 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     TecnicoRepository tecnicoReposiroty;
-
 }

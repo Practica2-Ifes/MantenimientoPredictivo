@@ -15,6 +15,8 @@ import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
+import domainapp.modules.simple.notificacion.SelectStra;
+
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Ficha.class)
 public class FichaRepository {
@@ -68,14 +70,16 @@ public class FichaRepository {
 		return ficha;
 	}
 	
-	
-	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha) {
-		final Ficha object = new Ficha(fechaCreacion, tipoFicha);
+	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha, final Tecnico tecnico) {
+		final Ficha object = new Ficha(tecnico, fechaCreacion,tipoFicha);
+		LocalDate fechaRealizacion = select.CalcularFechaRealizacion(fechaCreacion, tipoFicha);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
 	}
-	@javax.inject.Inject
+	
+	
+	@javax.inject.Inject 
 	RepositoryService repositoryService;
 
 	@javax.inject.Inject
@@ -87,4 +91,6 @@ public class FichaRepository {
 	@javax.inject.Inject
 	UnidadRepository unidades;
 	
+	@javax.inject.Inject
+	SelectStra select;
 }
