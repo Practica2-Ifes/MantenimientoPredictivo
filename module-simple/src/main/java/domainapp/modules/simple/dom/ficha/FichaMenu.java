@@ -13,11 +13,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.joda.time.LocalDate;
 
-import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
-import domainapp.modules.simple.tipoInsumo.TipoInsumo;
-import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
+import domainapp.modules.simple.notificacion.SelectStra;
 
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType= "simple.FichaMenu", repositoryFor = Ficha.class)
@@ -39,8 +37,8 @@ public class FichaMenu {
 			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
 			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
 			) {
-		return fichaRepository.crear(fechaCreacion, tipoFicha);
-	}
+		return fichaRepository.crear(fechaCreacion,tipoFicha);
+}
 	
 	@javax.inject.Inject
 	FichaRepository fichaRepository;
@@ -50,4 +48,7 @@ public class FichaMenu {
 	
 	@javax.inject.Inject
 	UnidadRepository unidades;
+	
+	@javax.inject.Inject	
+	SelectStra selectStra;
 }

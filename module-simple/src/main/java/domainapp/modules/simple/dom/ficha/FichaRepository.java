@@ -1,8 +1,6 @@
 package domainapp.modules.simple.dom.ficha;
 
 import java.util.List;
-import java.util.SortedSet;
-
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
@@ -15,6 +13,8 @@ import domainapp.modules.simple.iinsumo.IInsumo;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
+import domainapp.modules.simple.notificacion.SelectStra;
+
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Ficha.class)
 public class FichaRepository {
@@ -68,14 +68,16 @@ public class FichaRepository {
 		return ficha;
 	}
 	
-	
 	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha) {
-		final Ficha object = new Ficha(fechaCreacion, tipoFicha);
+		final Ficha object = new Ficha(fechaCreacion,tipoFicha);
+		LocalDate fechaRealizacion = select.CalcularFechaRealizacion(fechaCreacion, tipoFicha);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
 	}
-	@javax.inject.Inject
+	
+	
+	@javax.inject.Inject 
 	RepositoryService repositoryService;
 
 	@javax.inject.Inject
@@ -87,4 +89,6 @@ public class FichaRepository {
 	@javax.inject.Inject
 	UnidadRepository unidades;
 	
+	@javax.inject.Inject
+	SelectStra select;
 }
