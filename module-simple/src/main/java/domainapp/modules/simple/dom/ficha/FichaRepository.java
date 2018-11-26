@@ -25,8 +25,8 @@ public class FichaRepository {
 		return repositoryService.allInstances(Ficha.class);
 	}
 	
-	public List<Ficha> findByFecha(LocalDate fechaCreacion) {
-		return repositoryService.allMatches(new QueryDefault<>(Ficha.class, "fichasDia", "fechaCreacion", fechaCreacion));
+	public List<Ficha> findByFecha(LocalDate fechaCreacionOrigen, LocalDate fechaCreacionFin) {
+		return repositoryService.allMatches(new QueryDefault<>(Ficha.class, "fichasDia", "fechaCreacionOrigen", fechaCreacionOrigen, "fechaCreacionFin", fechaCreacionFin));
 
 	}
 	
