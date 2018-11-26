@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.NotPersistent;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -36,6 +39,20 @@ import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
 import domainapp.modules.simple.notificacion.SelectStra;
+
+@javax.jdo.annotations.Queries({
+	@javax.jdo.annotations.Query(
+	        name = "fichasDia", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"
+					+ " WHERE fechaCreacion >= :fechaCreacionOrigen && fechaCreacion <= :fechaCreacionFin"),
+	@javax.jdo.annotations.Query(
+	        name = "tipoBusqueda", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"
+					+ " WHERE tipoDeFicha == :tipoDeFicha")
+
+})
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
@@ -190,7 +207,7 @@ public class Ficha implements Comparable<Ficha> {
     @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
     @Property(editing = Editing.ENABLED)
     private String observaciones;
-    
+        
 
     //region > toString, compareTo
     @Override

@@ -96,6 +96,12 @@
 				<mb3:serviceAction objectType="simple.FichaMenu" id="listar">
 					<cpt:named>Listar Fichas</cpt:named>
 				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="findByFecha">
+					<cpt:named>Busqueda por Fecha</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="findByTipo">
+					<cpt:named>Busqueda por Tipo de Ficha</cpt:named>
+				</mb3:serviceAction>
 			</mb3:section>
 		</mb3:menu>
 		<mb3:menu unreferencedActions="true">
