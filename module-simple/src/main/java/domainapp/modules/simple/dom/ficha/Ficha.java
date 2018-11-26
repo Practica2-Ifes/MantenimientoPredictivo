@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.NotPersistent;
@@ -70,22 +71,27 @@ public class Ficha implements Comparable<Ficha> {
 		this.tipoDeFicha = tipoDeFicha;
 	}
 
-	@javax.jdo.annotations.Persistent()
+	@javax.jdo.annotations.Column(allowsNull = "false")
+	@Persistent(table="FICHA_INSUMOFICHA")
+	@Join(column="FICHA_ID_OID")
+	@Element(column="INSUMOFICHA_ID_EID")	
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<InsumoFicha> insumos = new ArrayList<InsumoFicha>();
 	
-//	@Column()
-//	@Property(editing=Editing.ENABLED)
-//	@PropertyLayout(named="Unidad de mantenimiento encendida")
-//	private boolean estadoUnidad;
 	
-    @javax.jdo.annotations.Persistent()
+	@javax.jdo.annotations.Column(allowsNull = "false")
+	@Persistent(table="FICHA_UNIDADFICHA")
+	@Join(column="FICHA_ID_OID")
+	@Element(column="UNIDADFICHA_ID_EID")	
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<UnidadFicha> unidades = new ArrayList<UnidadFicha>();
     
-    @javax.jdo.annotations.Persistent()
+	@javax.jdo.annotations.Column(allowsNull = "false")
+	@Persistent(table="FICHA_TECNICOFICHA")
+	@Join(column="FICHA_ID_OID")
+	@Element(column="TECNICOFICHA_ID_EID")	
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<TecnicoFicha> tecnicos = new ArrayList<TecnicoFicha>();
