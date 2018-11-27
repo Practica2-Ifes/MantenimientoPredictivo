@@ -2,7 +2,6 @@ package domainapp.application.fixture;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.inject.Inject;
