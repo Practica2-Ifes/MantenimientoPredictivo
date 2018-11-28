@@ -51,7 +51,11 @@ import domainapp.modules.simple.notificacion.SelectStra;
 	        name = "tipoBusqueda", language = "JDOQL",
 	        value = "SELECT "
 	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"
-					+ " WHERE tipoDeFicha == :tipoDeFicha")
+					+ " WHERE tipoDeFicha == :tipoDeFicha"),
+	@javax.jdo.annotations.Query(
+	        name = "busquedaFicha", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.ficha.Ficha"),
 
 })
 

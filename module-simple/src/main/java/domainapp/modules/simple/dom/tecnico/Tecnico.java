@@ -45,7 +45,12 @@ import lombok.AccessLevel;
 	        name = "listarAdministrativo", language = "JDOQL",
 	        value = "SELECT "
 	                + "FROM domainapp.modules.simple.dom.tecnico.Tecnico "
-	                + "WHERE sectorDeTrabajo == 'administracion' ")
+	                + "WHERE sectorDeTrabajo == 'administracion' "),
+	@javax.jdo.annotations.Query(
+	        name = "auxTecnico", language = "JDOQL",
+	        value = "SELECT "
+	                + "FROM domainapp.modules.simple.dom.tecnico.Tecnico "
+	                + "WHERE documento == :documento ")
 })
 
 

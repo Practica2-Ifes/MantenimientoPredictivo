@@ -102,6 +102,46 @@
 				<mb3:serviceAction objectType="simple.FichaMenu" id="findByTipo">
 					<cpt:named>Busqueda por Tipo de Ficha</cpt:named>
 				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="findByTecnico">
+					<cpt:named>Busqueda por Tecnico</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="findByUnidad">
+					<cpt:named>Busqueda por Unidad de Mantenimiento</cpt:named>
+				</mb3:serviceAction>
+			</mb3:section>
+		</mb3:menu>
+		<mb3:menu>
+			<mb3:named>Estadisticas</mb3:named>
+			<mb3:section>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosInsumos">
+					<cpt:named>Calculo Costos de Insumos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosPorTipo">
+					<cpt:named>Calculo Costos de Insumos Por Tipo de Ficha</cpt:named>
+				</mb3:serviceAction>			
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosPorFechas">
+					<cpt:named>Calculo Costos de Insumos Por Fechas</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosTecnico">
+					<cpt:named>Calculo Costos por Tecnicos</cpt:named>
+				</mb3:serviceAction>	
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosTecnicoPorTipo">
+					<cpt:named>Calculo Costos por Tecnicos Por Tipo de Ficha</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoCostosTecnicoPorFechas">
+					<cpt:named>Calculo Costos por Tecnicos Por Fechas</cpt:named>
+				</mb3:serviceAction>			
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoHorasTrabajo">
+					<cpt:named>Calculo Horas de Trabajo Totales de los Tecnicos</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoHorasTrabajoPorTipoDeFicha">
+					<cpt:named>Calculo Horas de Trabajo de los Tecnicos por Tipo de Ficha</cpt:named>
+				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.FichaMenu" id="calculoHorasTrabajoPorFechas">
+					<cpt:named>Calculo Horas de Trabajo de los Tecnicos entre Fechas</cpt:named>
+				</mb3:serviceAction>
+				
+				
 			</mb3:section>
 		</mb3:menu>
 		<mb3:menu unreferencedActions="true">
