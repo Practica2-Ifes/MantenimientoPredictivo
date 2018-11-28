@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.ficha;
 
 import java.util.List;
-
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
