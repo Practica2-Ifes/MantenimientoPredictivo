@@ -2,7 +2,6 @@ package domainapp.modules.simple.dom.ficha;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.IdentityType;
@@ -11,7 +10,6 @@ import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.Collection;
@@ -30,7 +28,6 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 import org.apache.isis.schema.utils.jaxbadapters.JodaDateTimeStringAdapter.ForJaxb;
 import org.joda.time.LocalDate;
-
 import lombok.AccessLevel;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
@@ -82,7 +79,6 @@ public class Ficha implements Comparable<Ficha> {
 	@Collection()
 	@Property(editing=Editing.ENABLED)
 	private List<InsumoFicha> insumos = new ArrayList<InsumoFicha>();
-	
 	
 	@javax.jdo.annotations.Column(allowsNull = "false")
 	@Persistent(table="FICHA_UNIDADFICHA")
