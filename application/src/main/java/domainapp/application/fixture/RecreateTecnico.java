@@ -3,15 +3,11 @@ package domainapp.application.fixture;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.joda.time.LocalDate;
-
 import com.google.common.collect.Lists;
-
 import domainapp.modules.simple.dom.domicilio.DomicilioRepository;
 import domainapp.modules.simple.dom.persona.EstadoCivil;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
