@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.tecnico;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,9 +14,7 @@ import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.domicilio.Domicilio;
 import domainapp.modules.simple.dom.persona.EstadoCivil;
-import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.TipoDeDocumento;
-
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = Tecnico.class)
 public class TecnicoRepository {

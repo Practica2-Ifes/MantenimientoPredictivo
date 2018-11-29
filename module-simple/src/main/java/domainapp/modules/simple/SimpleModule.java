@@ -24,7 +24,8 @@ import org.apache.isis.applib.ModuleAbstract;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.fixturescripts.teardown.TeardownFixtureAbstract2;
 
-import domainapp.modules.simple.dom.persona.Persona;
+//import domainapp.modules.simple.dom.persona.Persona;
+import domainapp.modules.simple.dom.tecnico.Tecnico;
 
 @XmlRootElement(name = "module")
 public class SimpleModule extends ModuleAbstract {
@@ -34,7 +35,7 @@ public class SimpleModule extends ModuleAbstract {
         return new TeardownFixtureAbstract2() {
             @Override
             protected void execute(ExecutionContext executionContext) {
-                deleteFrom(Persona.class);
+                deleteFrom(Tecnico.class);
             }
         };
     }

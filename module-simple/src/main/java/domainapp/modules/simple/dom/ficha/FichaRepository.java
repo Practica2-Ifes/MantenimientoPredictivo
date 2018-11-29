@@ -9,7 +9,6 @@ import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.joda.time.LocalDate;
-
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.iinsumo.IInsumo;
