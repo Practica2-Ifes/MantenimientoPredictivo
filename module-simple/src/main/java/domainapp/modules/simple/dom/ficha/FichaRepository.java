@@ -67,18 +67,6 @@ public class FichaRepository {
 		}
 		return contador;
 	}
-//	private List<TecnicoFicha> auxFindByTecnico(Integer documento){
-//		Tecnico tecnico = repositoryService.uniqueMatch(new QueryDefault<>(Tecnico.class, "auxTecnico", "documento", documento));
-//		
-//		List<TecnicoFicha> aux = repositoryService.allMatches(new QueryDefault<>(TecnicoFicha.class, "auxTecnico2"));
-//		List<TecnicoFicha> contador = new ArrayList<TecnicoFicha>();
-//		for(int i=0; i<aux.size();i++) {		
-//			if (aux.get(i).getDocumento().equals(tecnico.getDocumento())){
-//				contador.add(aux.get(i));
-//			}
-//		}
-//		return contador;		
-//	}
 	
 	public String calculoInsumos(){
 		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "busquedaFicha"));
@@ -185,6 +173,90 @@ public class FichaRepository {
 		return "La cantidad de horas de Trabajo de los Tecnicos entre las fechas: "+fechaCreacionOrigen+ " y: "+fechaCreacionFin+ " es de: "+horasTrabajo+" horas";
 	}
 	
+	public String calculoCostoTotal(double costoHora){
+		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "busquedaFicha"));
+		double contPrecio=0;
+		double costoTecnico=0;
+		double costoTotal=0;
+		for(int k=0 ;k<aux.size(); k++) {
+			for (int j=0; j<aux.get(k).getInsumos().size();j++) {
+				double precioTot= aux.get(k).getInsumos().get(j).getInsumoUsado().getPrecio() *aux.get(k).getInsumos().get(j).getCantidadUsada();
+				contPrecio = contPrecio +precioTot;
+			}
+			for (int j=0; j<aux.get(k).getTecnicos().size();j++) {
+				double costoTecnicoTotal= aux.get(k).getTecnicos().get(j).getHorasTrabajo() * costoHora;
+				costoTecnico = costoTecnico +costoTecnicoTotal;
+			}		
+		}
+		costoTotal=contPrecio+costoTecnico;
+		return "El costo total de todos los Tecnicos e Insumos es de: "+costoTotal+"$";
+	}
+	
+	public String calculoCostoTotalPorTipo(double costoHora, TipoDeFicha tipoDeFicha){
+		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "tipoBusqueda", "tipoDeFicha", tipoDeFicha));
+		double contPrecio=0;
+		double costoTecnico=0;
+		double costoTotal=0;
+		for(int k=0 ;k<aux.size(); k++) {
+			for (int j=0; j<aux.get(k).getInsumos().size();j++) {
+				double precioTot= aux.get(k).getInsumos().get(j).getInsumoUsado().getPrecio() *aux.get(k).getInsumos().get(j).getCantidadUsada();
+				contPrecio = contPrecio +precioTot;
+			}
+			for (int j=0; j<aux.get(k).getTecnicos().size();j++) {
+				double costoTecnicoTotal= aux.get(k).getTecnicos().get(j).getHorasTrabajo() * costoHora;
+				costoTecnico = costoTecnico +costoTecnicoTotal;
+			}		
+		}
+		costoTotal=contPrecio+costoTecnico;
+		return "El costo total de todos los Tecnicos e Insumos para las fichas: "+tipoDeFicha+ " es de: "+costoTotal+"$";
+	}
+	
+	public String calculoCostoTotalPorFechas(double costoHora, LocalDate fechaCreacionOrigen, LocalDate fechaCreacionFin){
+		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "fichasDia", "fechaCreacionOrigen", fechaCreacionOrigen, "fechaCreacionFin", fechaCreacionFin));
+		double contPrecio=0;
+		double costoTecnico=0;
+		double costoTotal=0;
+		for(int k=0 ;k<aux.size(); k++) {
+			for (int j=0; j<aux.get(k).getInsumos().size();j++) {
+				double precioTot= aux.get(k).getInsumos().get(j).getInsumoUsado().getPrecio() *aux.get(k).getInsumos().get(j).getCantidadUsada();
+				contPrecio = contPrecio +precioTot;
+			}
+			for (int j=0; j<aux.get(k).getTecnicos().size();j++) {
+				double costoTecnicoTotal= aux.get(k).getTecnicos().get(j).getHorasTrabajo() * costoHora;
+				costoTecnico = costoTecnico +costoTecnicoTotal;
+			}		
+		}
+		costoTotal=contPrecio+costoTecnico;
+		return "El costo total de todos los Tecnicos e Insumos entre las Fechas: "+ fechaCreacionOrigen+ " y: "+ fechaCreacionFin+ " es de: "+costoTotal+"$";
+	}
+	
+	public String costoPromedioUnidades(double costoPromedio, EstadoUnidad estadoUnidad){
+		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "busquedaFicha"));
+		double contCosto=0;
+		for(int k=0 ;k<aux.size(); k++) {
+			for (int j=0; j<aux.get(k).getUnidades().size();j++) {
+				if(aux.get(k).getUnidades().get(j).getEstadoUnidad().equals(estadoUnidad)) {
+					double costoPromedioTotal = aux.get(k).getUnidades().get(j).getHorasUso() * costoPromedio;
+					contCosto= contCosto + costoPromedioTotal;
+				}
+			}
+		}
+		return "El costo de Mantener Unidades en el estado: "+estadoUnidad+ " es de: "+contCosto+"$";
+	}
+	
+	public String horasUsoPorEstado(EstadoUnidad estadoUnidad){
+		List<Ficha> aux= repositoryService.allMatches(new QueryDefault<>(Ficha.class, "busquedaFicha"));
+		int contHoras=0;
+		for(int k=0 ;k<aux.size(); k++) {
+			for (int j=0; j<aux.get(k).getUnidades().size();j++) {
+				if(aux.get(k).getUnidades().get(j).getEstadoUnidad().equals(estadoUnidad)) {
+					contHoras= contHoras + aux.get(k).getUnidades().get(j).getHorasUso();
+				}
+			}
+		}
+		return "La cantidad de Horas que las Unidades pasaron en el estado: "+estadoUnidad+ " es de: "+contHoras+" horas";
+	}
+	
 
 	
 	public Ficha agregarInsumo(final Ficha ficha, final IInsumo insumo, final String descripcion, final Integer cantidadUsada) {
@@ -200,6 +272,7 @@ public class FichaRepository {
 		UnidadFicha unidadFicha = new UnidadFicha(unidad, descripcion, estadoUnidad, horasUso);
 		unidades.add(unidadFicha);
 		ficha.setUnidades(unidades);
+		unidad.setEstadoUnidad(estadoUnidad);
 		return ficha;
 	}
 	

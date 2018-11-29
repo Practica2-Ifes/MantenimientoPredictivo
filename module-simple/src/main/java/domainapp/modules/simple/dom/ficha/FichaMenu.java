@@ -17,6 +17,7 @@ import org.joda.time.LocalDate;
 
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
+import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 import domainapp.modules.simple.unidadMantenimiento.UnidadRepository;
 import domainapp.modules.simple.notificacion.SelectStra;
@@ -32,6 +33,17 @@ public class FichaMenu {
 	public List<Ficha> listar() {
 		return fichaRepository.listarFichas();
 	}
+	
+	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Ficha")
+	@MemberOrder(sequence = "2")
+	public Ficha crear(
+			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
+			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
+			) {
+		return fichaRepository.crear(fechaCreacion,tipoFicha);
+			}
 	
     
 	@Action(semantics = SemanticsOf.SAFE)
@@ -161,16 +173,57 @@ public class FichaMenu {
 			return fichaRepository.horasTrabajoPorFechas(fechaBusqueda, fechaBusquedaFin);
 	}
 	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Calculo Costo Total de Trabajo y De Insumos")
+	@MemberOrder(sequence = "8")
+	public String calculoCostoTotal(
+			@ParameterLayout(named = "Costo de Horas de Tecnico: ") final Double costoHora)		
+	{
+			return fichaRepository.calculoCostoTotal(costoHora);
+	}
 	
 	@Action(semantics = SemanticsOf.SAFE)
-	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Ficha")
-	@MemberOrder(sequence = "2")
-	public Ficha crear(
-			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
-			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
-			) {
-		return fichaRepository.crear(fechaCreacion,tipoFicha);
-			}
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Calculo Costo de Trabajo y de Insumos Por Tipo de Ficha")
+	@MemberOrder(sequence = "9")
+	public String calculoCostoTotalPorTipo(
+			@ParameterLayout(named = "Costo de Horas de Tecnico: ") final Double costoHora,
+			@ParameterLayout(named = "Tipo de Ficha para Busqueda: ") final TipoDeFicha tipoBusqueda) 			
+	{
+			return fichaRepository.calculoCostoTotalPorTipo(costoHora, tipoBusqueda);
+	}
+	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Calculo Costo de Trabajo y de Insumos entre Fechas")
+	@MemberOrder(sequence = "10")
+	public String calculoCostoTotalPorFechas(
+			@ParameterLayout(named = "Costo de Horas de Tecnico: ") final Double costoHora,
+			@ParameterLayout(named = "Desde la Fecha: ") final LocalDate fechaBusqueda,
+			@ParameterLayout(named = "Hasta la Fecha: ") final LocalDate fechaBusquedaFin)		
+	{
+			return fichaRepository.calculoCostoTotalPorFechas(costoHora, fechaBusqueda, fechaBusquedaFin);
+	}
+	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Calculo Costo de Uso de las Unidades en Ciertos Estados")
+	@MemberOrder(sequence = "11")
+	public String calculoCostoPromedioUnidades(
+			@ParameterLayout(named = "Costo Promedio de Horas de Uso de las Unidades: ") final Double costoPromedio,
+			@ParameterLayout(named = "Estado de las Unidades que quiere calcular el costo: ") final EstadoUnidad estadoUnidad)
+	{
+			return fichaRepository.costoPromedioUnidades(costoPromedio, estadoUnidad);
+	}
+	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Calculo Horas de Uso de las Unidades en Ciertos Estados")
+	@MemberOrder(sequence = "12")
+	public String calculoHorasUnidades(
+			@ParameterLayout(named = "Estado de las Unidades que quiere calcular las horas: ") final EstadoUnidad estadoUnidad)
+	{
+			return fichaRepository.horasUsoPorEstado(estadoUnidad);
+	}
+	
+	
+
 	
 
 	@javax.inject.Inject
