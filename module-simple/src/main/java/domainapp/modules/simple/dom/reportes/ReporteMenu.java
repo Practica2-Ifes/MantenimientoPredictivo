@@ -21,6 +21,7 @@ import org.apache.isis.applib.value.Blob;
 
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
+import domainapp.modules.simple.dom.tecnico.Titulo;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -66,6 +67,11 @@ public class ReporteMenu {
 		
 			TecnicoReporte tecnicoReporte=new TecnicoReporte();
 			tecnicoReporte.setName(tec.getName());
+			tecnicoReporte.setApellido(tec.getApellido());
+			tecnicoReporte.setEmail(tec.getEmail());
+			tecnicoReporte.setTitulo(tec.getTitulo());
+			tecnicoReporte.setMatricula(tec.getMatriculaProfesional());
+			tecnicoReporte.setNumeroEmpleado(tec.getNumeroEmpleado());
 			datasource.addTecnico(tecnicoReporte);
 		}
 		String jrxml = "Tecnicos.jrxml";

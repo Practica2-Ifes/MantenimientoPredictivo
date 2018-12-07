@@ -23,7 +23,21 @@ public class TecnicoDataSource implements JRDataSource{
 		if("name".equals(jrf.getName())){
 			
 			valor=listado.get(indiceActual).getName();
-			
+		}
+		else if("apellido".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getApellido();
+		}
+		else if("email".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getEmail();
+		}
+		else if("numeroEmpleado".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getNumeroEmpleado();
+		}
+		else if("titulo".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getTitulo();
+		}
+		else if("matricula".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getMatricula();
 		}
 		return valor;
 	}
