@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Generadores" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3136dbdd-0a24-4e75-8a90-1d81a601dccf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JRDAGenerador"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
+	</field>
+	<field name="estadoUnidad" class="domainapp.modules.simple.unidadMantenimiento.EstadoUnidad">
+		<fieldDescription><![CDATA[estadoUnidad]]></fieldDescription>
+	</field>
+	<field name="consumoEnergetico" class="java.lang.Double">
+		<fieldDescription><![CDATA[consumoEnergetico]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="100" height="30" uuid="b413acfb-bcbd-420f-8ada-a2f1bddda4d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a592b8f9-2869-44ca-af21-fb0dc2b18091"/>
+				</reportElement>
+				<text><![CDATA[consumoEnergetico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="100" height="30" uuid="7296e6df-ebaa-48a1-9bf0-e04891aa593c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2138849c-1777-4ac2-bfdb-c7eb01d5fd8a"/>
+				</reportElement>
+				<text><![CDATA[descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="0" width="100" height="30" uuid="4a21b447-c3dc-4d82-bc12-27e2b9d50880">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c03bf18c-8275-4a83-af71-c0772be6ffcf"/>
+				</reportElement>
+				<text><![CDATA[estadoUnidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="55" width="100" height="30" uuid="055a8bda-dbcf-414a-bc15-f1f524c24e67">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a592b8f9-2869-44ca-af21-fb0dc2b18091"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{consumoEnergetico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="54" width="100" height="30" uuid="8e7df3df-40cf-414b-8b9b-53237901df11">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2138849c-1777-4ac2-bfdb-c7eb01d5fd8a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="55" width="100" height="30" uuid="073bddb0-1a87-40bb-aac2-ffb08afb5e31">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c03bf18c-8275-4a83-af71-c0772be6ffcf"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{estadoUnidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

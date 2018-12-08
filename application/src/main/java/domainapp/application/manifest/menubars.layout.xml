@@ -158,13 +158,16 @@
 				
 			</mb3:section>
 		</mb3:menu>
+		
 		<mb3:menu>
 			<mb3:named>Reportes</mb3:named>
 			<mb3:section>
 				<mb3:serviceAction objectType="simple.ReporteMenu" id="imprimirTecnico">
 					<cpt:named>Tecnicos Trabajando</cpt:named>
 				</mb3:serviceAction>
-				
+				<mb3:serviceAction objectType="simple.ReporteMenu" id="imprimirTecnicoIndividual">
+					<cpt:named>Tecnico por nombre</cpt:named>
+				</mb3:serviceAction>
 			</mb3:section>
 		</mb3:menu>
 		<mb3:menu unreferencedActions="true">
