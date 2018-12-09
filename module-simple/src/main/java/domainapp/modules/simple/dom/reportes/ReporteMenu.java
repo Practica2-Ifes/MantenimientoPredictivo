@@ -129,7 +129,7 @@ public class ReporteMenu {
 	
 	@Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "3")
+    @MemberOrder(sequence = "4")
 	public Blob imprimirtransformadores() throws JRException, IOException {
 		
 		TransformadorDataSource datasource = new TransformadorDataSource();
@@ -160,7 +160,7 @@ public class ReporteMenu {
 	
 	@Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    @MemberOrder(sequence = "4")
+    @MemberOrder(sequence = "5")
 	public Blob imprimirInterruptores() throws JRException, IOException {
 		
 		InterruptorDataSource datasource = new InterruptorDataSource();
