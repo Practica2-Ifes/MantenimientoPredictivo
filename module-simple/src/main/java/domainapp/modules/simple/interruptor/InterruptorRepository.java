@@ -17,16 +17,15 @@ public class InterruptorRepository {
 	}
 	
 	public UnidadDeMantenimiento crear(
+			final String numeroDeSerie,
 			final EstadoUnidad estadoUnidad,
-			final String descripcion) {
-		final UnidadDeMantenimiento object = new Interruptor(estadoUnidad, descripcion);
+			final String descripcion,
+			final Double amperajeSoportado) {
+		final UnidadDeMantenimiento object = new Interruptor(numeroDeSerie,estadoUnidad, descripcion,amperajeSoportado);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;
-	}
-	
-	
-	
+	}	
 	
 	@javax.inject.Inject
 	RepositoryService repositoryService;

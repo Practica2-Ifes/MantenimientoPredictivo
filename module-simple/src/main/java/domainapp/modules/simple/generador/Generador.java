@@ -34,8 +34,8 @@ import lombok.AccessLevel;
 @lombok.Getter @lombok.Setter
 public class Generador extends UnidadDeMantenimiento {
 
-    public Generador(EstadoUnidad estadoUnidad, String descripcion, double consumoEnergetico) {
-		super(estadoUnidad, descripcion);
+    public Generador(String numeroDeSerie, EstadoUnidad estadoUnidad, String descripcion, double consumoEnergetico) {
+		super(numeroDeSerie, estadoUnidad, descripcion);
 		this.consumoEnergetico = consumoEnergetico;
 		// TODO Auto-generated constructor stub
 	}

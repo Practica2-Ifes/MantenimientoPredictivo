@@ -53,8 +53,8 @@ public class Transformador extends UnidadDeMantenimiento {
 		return this;
 	}
 	
-	public Transformador(EstadoUnidad estadoUnidad, String descripcion, double voltajeAnterior, double voltajeTransformado) {
-		super(estadoUnidad, descripcion);
+	public Transformador(String numeroDeSerie, EstadoUnidad estadoUnidad, String descripcion, double voltajeAnterior, double voltajeTransformado) {
+		super(numeroDeSerie, estadoUnidad, descripcion);
 		this.voltajeAnterior= voltajeAnterior;
 		this.voltajeTransformado= voltajeTransformado;
 		// TODO Auto-generated constructor stub

@@ -22,10 +22,11 @@ public class GeneradorRepository {
 	}
 	
 	public UnidadDeMantenimiento crear(
+			final String numeroDeSerie,
 			final EstadoUnidad estadoUnidad,
 			final String descripcion,
 			final Double consumoEnergetico) {
-		final UnidadDeMantenimiento object = new Generador(estadoUnidad, descripcion, consumoEnergetico);
+		final UnidadDeMantenimiento object = new Generador(numeroDeSerie, estadoUnidad, descripcion, consumoEnergetico);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;

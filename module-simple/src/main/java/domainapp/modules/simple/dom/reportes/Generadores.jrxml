@@ -18,7 +18,19 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="229" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="0" width="842" height="229" backcolor="#F27F0C" uuid="16c7a14b-8171-478b-a598-236014cd8cd0"/>
+				<staticText>
+					<reportElement key="" positionType="FixRelativeToBottom" x="223" y="60" width="370" height="83" uuid="3dd6be09-9358-429c-b5b4-75085bd6c849"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Dyuthi" size="60" isBold="true" isUnderline="true"/>
+						<paragraph lineSpacing="1_1_2"/>
+					</textElement>
+					<text><![CDATA[Generadores]]></text>
+				</staticText>
+			</frame>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>

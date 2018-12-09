@@ -32,10 +32,11 @@ public class GeneradorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Generador")
 	@MemberOrder(sequence = "3")
-	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Numero de Serie")final String numeroDeSerie,
+										@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion")final String descripcion,
 										@ParameterLayout(named="Consumo Energetico")final Double consumoEnergetico) {
-		return generadorRepository.crear(estadoUnidad, descripcion, consumoEnergetico);
+		return generadorRepository.crear(numeroDeSerie, estadoUnidad, descripcion, consumoEnergetico);
 	}
 	
 	@javax.inject.Inject
