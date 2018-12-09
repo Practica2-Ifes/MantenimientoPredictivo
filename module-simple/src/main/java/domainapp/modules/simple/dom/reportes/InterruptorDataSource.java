@@ -7,8 +7,9 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class GeneradorDataSource implements JRDataSource{
-private List<GeneradorReporte> listado=new ArrayList<GeneradorReporte>();
+public class InterruptorDataSource implements JRDataSource{
+	
+private List<InterruptorReporte> listado=new ArrayList<InterruptorReporte>();
 	
 	private int indiceActual= -1;
 	
@@ -20,9 +21,9 @@ private List<GeneradorReporte> listado=new ArrayList<GeneradorReporte>();
 		if ("numeroDeSerie".equals(jrf.getName())){
 			valor=listado.get(indiceActual).getNumeroDeSerie();
 		}
-		else if("consumoEnergetico".equals(jrf.getName())){
+		else if("amperajeSoportado".equals(jrf.getName())){
 			
-			valor=listado.get(indiceActual).getConsumoEnergetico();
+			valor=listado.get(indiceActual).getAmperajeSoportado();
 		}
 		else if("descripcion".equals(jrf.getName())) {
 			valor=listado.get(indiceActual).getDescripcion();
@@ -38,9 +39,8 @@ private List<GeneradorReporte> listado=new ArrayList<GeneradorReporte>();
 		return ++indiceActual<listado.size();
 	}
 
-	public void addGenerador(GeneradorReporte generadorReporte)  {
+	public void addInterruptor(InterruptorReporte interruptorReporte)  {
 		// TODO Auto-generated method stub
-		this.listado.add(generadorReporte);
+		this.listado.add(interruptorReporte);
 	}
-
 }

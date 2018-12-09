@@ -18,7 +18,10 @@ private List<TransformadorReporte> listado=new ArrayList<TransformadorReporte>()
 		
 		Object valor = null;
 		
-		if("estadoUnidad".equals(jrf.getName())){
+		if("numeroDeSerie".equals(jrf.getName())) {
+			valor=listado.get(indiceActual).getNumeroDeSerie();
+		}
+		else if("estadoUnidad".equals(jrf.getName())){
 			valor=listado.get(indiceActual).getEstadoUnidad();
 		}
 		else if("descripcion".equals(jrf.getName())) {

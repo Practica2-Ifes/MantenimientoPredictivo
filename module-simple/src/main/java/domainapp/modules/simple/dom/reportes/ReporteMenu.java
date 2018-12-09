@@ -24,6 +24,8 @@ import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.generador.GeneradorRepository;
+import domainapp.modules.simple.interruptor.Interruptor;
+import domainapp.modules.simple.interruptor.InterruptorRepository;
 import domainapp.modules.simple.transformador.Transformador;
 import domainapp.modules.simple.transformador.TransformadorRepository;
 import net.sf.jasperreports.engine.JRException;
@@ -70,7 +72,6 @@ public class ReporteMenu {
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Action(semantics=SemanticsOf.SAFE)
 	@ActionLayout(bookmarking=BookmarkPolicy.AS_ROOT)
 	@MemberOrder(sequence="2")
@@ -106,6 +107,7 @@ public class ReporteMenu {
 		for (Generador gen : generadorRepository.listarGeneradores()){
 		
 			GeneradorReporte generadorReporte=new GeneradorReporte();
+			generadorReporte.setNumeroDeSerie(gen.getNumeroDeSerie());
 			generadorReporte.setEstadoUnidad(gen.getEstadoUnidad());
 			generadorReporte.setDescripcion(gen.getDescripcion());
 			generadorReporte.setConsumoEnergetico(gen.getConsumoEnergetico());
@@ -124,6 +126,7 @@ public class ReporteMenu {
 		return ReporteRepository.imprimirReporteLista(jasperPrint, jrxml, nombreArchivo);
 		
 	}
+	
 	@Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "3")
@@ -134,6 +137,7 @@ public class ReporteMenu {
 		for (Transformador trf : transformadorRepository.listarTransformadores()){
 		
 			TransformadorReporte transformadorReporte=new TransformadorReporte();
+			transformadorReporte.setNumeroDeSerie(trf.getNumeroDeSerie());
 			transformadorReporte.setEstadoUnidad(trf.getEstadoUnidad());
 			transformadorReporte.setDescripcion(trf.getDescripcion());
 			transformadorReporte.setVoltajeEntrada(trf.getVoltajeAnterior());
@@ -153,6 +157,37 @@ public class ReporteMenu {
 		return ReporteRepository.imprimirReporteLista(jasperPrint, jrxml, nombreArchivo);
 		
 	}
+	
+	@Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @MemberOrder(sequence = "4")
+	public Blob imprimirInterruptores() throws JRException, IOException {
+		
+		InterruptorDataSource datasource = new InterruptorDataSource();
+		
+		for (Interruptor Itr : interruptorRepository.listarInterruptores()){
+		
+			InterruptorReporte interruptorReporte=new InterruptorReporte();
+			interruptorReporte.setNumeroDeSerie(Itr.getNumeroDeSerie());
+			interruptorReporte.setAmperajeSoportado(Itr.getAmperajeSoportado());
+			interruptorReporte.setEstadoUnidad(Itr.getEstadoUnidad());
+			interruptorReporte.setDescripcion(Itr.getDescripcion());
+			datasource.addInterruptor(interruptorReporte);
+		}
+		String jrxml = "Interruptores.jrxml";
+		String nombreArchivo = "Interruptores";
+		
+		InputStream input = ReporteRepository.class.getResourceAsStream(jrxml);
+		JasperDesign jd = JRXmlLoader.load(input);
+		
+		JasperReport reporte = JasperCompileManager.compileReport(jd);
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, datasource);
+		
+		return ReporteRepository.imprimirReporteLista(jasperPrint, jrxml, nombreArchivo);
+		
+	}
+	
 	public List<Tecnico> choices0ImprimirTecnicoIndividual(){
 		return tecnicoRepository.listarTecnico();
 	}
@@ -165,4 +200,6 @@ public class ReporteMenu {
 	
 	@Inject
 	TransformadorRepository transformadorRepository;
+	
+	InterruptorRepository interruptorRepository;
 }

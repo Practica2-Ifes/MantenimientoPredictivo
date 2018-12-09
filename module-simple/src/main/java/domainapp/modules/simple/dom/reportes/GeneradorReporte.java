@@ -4,14 +4,29 @@ import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 
 public class GeneradorReporte {
 	
+
+
+
+
 	public GeneradorReporte() {
 	}
 	
-	public GeneradorReporte(EstadoUnidad estadoUnidad, String descripcion, Double consumoEnergetico) {
+	public GeneradorReporte(String numeroDeSerie, EstadoUnidad estadoUnidad, String descripcion, Double consumoEnergetico) {
 		super();
+		this.numeroDeSerie=numeroDeSerie;
 		this.estadoUnidad = estadoUnidad;
 		this.descripcion = descripcion;
 		this.consumoEnergetico = consumoEnergetico;
+	}
+	
+	private String numeroDeSerie;
+	
+	public String getNumeroDeSerie() {
+		return numeroDeSerie;
+	}
+
+	public void setNumeroDeSerie(String numeroDeSerie) {
+		this.numeroDeSerie = numeroDeSerie;
 	}
 
 	private EstadoUnidad estadoUnidad;

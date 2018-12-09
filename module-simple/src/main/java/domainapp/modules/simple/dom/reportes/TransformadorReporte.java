@@ -4,6 +4,7 @@ import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 
 public class TransformadorReporte {
 	
+	private String numeroDeSerie;
 	private Double voltajeEntrada;
 	private Double voltajeSalida;
 	private EstadoUnidad estadoUnidad;
@@ -12,13 +13,22 @@ public class TransformadorReporte {
 	public TransformadorReporte() {
 	}
 	
-	public TransformadorReporte(Double voltajeEntrada, Double voltajeSalida, EstadoUnidad estadoUnidad,
+	public TransformadorReporte(String numeroDeSerie, Double voltajeEntrada, Double voltajeSalida, EstadoUnidad estadoUnidad,
 			String descripcion) {
 		super();
+		this.numeroDeSerie=numeroDeSerie;
 		this.voltajeEntrada = voltajeEntrada;
 		this.voltajeSalida = voltajeSalida;
 		this.estadoUnidad = estadoUnidad;
 		this.descripcion = descripcion;
+	}
+	
+	public String getNumeroDeSerie() {
+		return numeroDeSerie;
+	}
+
+	public void setNumeroDeSerie(String numeroDeSerie) {
+		this.numeroDeSerie = numeroDeSerie;
 	}
 	
 	public Double getVoltajeEntrada() {
