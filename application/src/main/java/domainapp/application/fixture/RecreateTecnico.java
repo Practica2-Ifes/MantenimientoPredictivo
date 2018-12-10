@@ -16,7 +16,6 @@ import domainapp.modules.simple.dom.tecnico.ObraSocial;
 import domainapp.modules.simple.dom.tecnico.SectorDeTrabajo;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoMenu;
-import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.dom.tecnico.Titulo;
 
 

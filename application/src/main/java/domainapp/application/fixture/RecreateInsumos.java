@@ -6,12 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
-
 import com.google.common.collect.Lists;
-
 import domainapp.modules.simple.insumo.Insumo;
 import domainapp.modules.simple.insumo.InsumoMenu;
-import domainapp.modules.simple.tipoInsumo.TipoInsumo;
 import domainapp.modules.simple.tipoInsumo.TipoInsumoRepository;
 
 public class RecreateInsumos extends FixtureScript{
