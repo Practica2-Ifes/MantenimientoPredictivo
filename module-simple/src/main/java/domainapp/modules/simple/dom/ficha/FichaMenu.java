@@ -39,9 +39,10 @@ public class FichaMenu {
 	@MemberOrder(sequence = "2")
 	public Ficha crear(
 			@ParameterLayout(named = "Fecha de creacion") final LocalDate fechaCreacion,
-			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha
+			@ParameterLayout(named = "Tipo de ficha") final TipoDeFicha tipoFicha,
+			@ParameterLayout(named = "Observaciones") final String observaciones
 			) {
-		return fichaRepository.crear(fechaCreacion,tipoFicha);
+		return fichaRepository.crear(fechaCreacion, tipoFicha, observaciones);
 			}
 	
     

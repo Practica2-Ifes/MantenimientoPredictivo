@@ -65,10 +65,11 @@ import domainapp.modules.simple.notificacion.SelectStra;
 public class Ficha implements Comparable<Ficha> {
 	
 	
-    public Ficha(LocalDate fechaCreacion, TipoDeFicha tipoDeFicha) {
+    public Ficha(LocalDate fechaCreacion, TipoDeFicha tipoDeFicha, String observaciones) {
 		super();
 		setFechaCreacion(fechaCreacion);
 		setFechaRealizarControl(SelectStra.CalcularFechaRealizacion(fechaCreacion, tipoDeFicha));
+		setObservaciones(observaciones);
 		this.tipoDeFicha = tipoDeFicha;
 	}
 
@@ -114,7 +115,6 @@ public class Ficha implements Comparable<Ficha> {
     @lombok.NonNull
     @Property()
     @XmlJavaTypeAdapter(ForJaxb.class)
-    @Title(prepend="Fecha de realizacion")
     private LocalDate fechaRealizarControl;
 
     

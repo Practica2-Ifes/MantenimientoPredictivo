@@ -304,8 +304,8 @@ public class FichaRepository {
 		return ficha;
 	}
 	
-	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha) {
-		final Ficha object = new Ficha(fechaCreacion,tipoFicha);
+	public Ficha crear(final LocalDate fechaCreacion, final TipoDeFicha tipoFicha, final String observaciones) {
+		final Ficha object = new Ficha(fechaCreacion, tipoFicha, observaciones);
 		LocalDate fechaRealizacion = select.CalcularFechaRealizacion(fechaCreacion, tipoFicha);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
