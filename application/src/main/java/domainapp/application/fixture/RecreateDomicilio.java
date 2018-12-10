@@ -48,7 +48,7 @@ public class RecreateDomicilio extends FixtureScript {
 	@Override
 	protected void execute(ExecutionContext ec) {
 		// TODO Auto-generated method stub
-		final int numero = defaultParam("numero", ec, 10);
+		final int numero = defaultParam("numero", ec, 3);
 
 		if (numero < 0 || numero > calles.size()) {
 			throw new IllegalArgumentException(String.format("number must be in range [0,%d)", calles.size()));

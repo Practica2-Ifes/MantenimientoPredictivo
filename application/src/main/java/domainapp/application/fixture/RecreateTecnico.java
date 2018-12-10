@@ -16,6 +16,7 @@ import domainapp.modules.simple.dom.tecnico.ObraSocial;
 import domainapp.modules.simple.dom.tecnico.SectorDeTrabajo;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import domainapp.modules.simple.dom.tecnico.TecnicoMenu;
+import domainapp.modules.simple.dom.tecnico.TecnicoRepository;
 import domainapp.modules.simple.dom.tecnico.Titulo;
 
 
@@ -26,7 +27,6 @@ public class RecreateTecnico extends FixtureScript{
 	public final List<Integer> documentos=Collections.unmodifiableList(Arrays.asList(36775544,24156789,37554466));
 	public final List<String> telefonos= Collections.unmodifiableList(Arrays.asList("155123465","155444443","157654159"));
 	public final List<String> emails = Collections.unmodifiableList(Arrays.asList("romero92@gmail.com","a@a.com","b@n.com"));
-//	final final List<LocalDate> fechaNacimiento = Collections.unmodifiableList(Arrays.asList(11/20/2018));
 	final List<Integer> numeroEmpleados=Collections.unmodifiableList(Arrays.asList(156,687,159));
 	final List<String> matriculaProfesionales=Collections.unmodifiableList(Arrays.asList("516","6460","1597"));
 	
@@ -55,7 +55,7 @@ public class RecreateTecnico extends FixtureScript{
 	@Override
 	protected void execute(ExecutionContext ec) {
 		// TODO Auto-generated method stub
-		final int numero = defaultParam("numero", ec, 10);
+		final int numero = defaultParam("numero", ec, 3);
 
 		if (numero < 0 || numero > names.size()) {
 			throw new IllegalArgumentException(String.format("number must be in range [0,%d)", names.size()+"SIZE = "+names.size()));
