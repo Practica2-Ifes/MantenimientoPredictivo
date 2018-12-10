@@ -29,9 +29,11 @@ public class InterruptorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Interruptor")
 	@MemberOrder(sequence = "1.1")
-	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
-										@ParameterLayout(named="Descripcion")final String descripcion) {
-		return interruptorRepository.crear(estadoUnidad, descripcion);
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Numero de Serie")final String numeroDeSerie,
+										@ParameterLayout(named="Estado Unidad")final EstadoUnidad estadoUnidad,
+										@ParameterLayout(named="Descripcion")final String descripcion,
+										@ParameterLayout(named="Amperaje Soportado")final Double amperajeSoportado) {
+		return interruptorRepository.crear(numeroDeSerie,estadoUnidad, descripcion,amperajeSoportado);
 	}
 	
 	@javax.inject.Inject

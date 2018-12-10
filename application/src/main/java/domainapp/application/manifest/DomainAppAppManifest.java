@@ -20,9 +20,7 @@ package domainapp.application.manifest;
 
 import org.apache.isis.applib.AppManifestAbstract2;
 import org.isisaddons.module.security.SecurityModule;
-
 import domainapp.application.DomainAppApplicationModule;
-import domainapp.application.fixture.scenarios.DomainAppDemo;
 
 /**
  * Bootstrap the application.

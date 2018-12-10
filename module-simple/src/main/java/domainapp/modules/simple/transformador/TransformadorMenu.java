@@ -10,6 +10,7 @@ import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
@@ -30,11 +31,12 @@ public class TransformadorMenu {
 	@Action(semantics = SemanticsOf.SAFE)
 	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Crear Transformador")
 	@MemberOrder(sequence = "1.2")
-	public UnidadDeMantenimiento crear(@ParameterLayout(named="Estado Unidad") final EstadoUnidad estadoUnidad,
+	public UnidadDeMantenimiento crear(@ParameterLayout(named="Numero de Serie") final String numeroDeSerie,
+										@ParameterLayout(named="Estado Unidad") final EstadoUnidad estadoUnidad,
 										@ParameterLayout(named="Descripcion") final String descripcion,
 										@ParameterLayout(named="Voltaje Anterior") final double voltajeAnterior,
 										@ParameterLayout(named="Voltaje Transformado") final double voltajeTransformado) {
-		return transformadorRepository.crear(estadoUnidad, descripcion, voltajeAnterior, voltajeTransformado);
+		return transformadorRepository.crear(numeroDeSerie,estadoUnidad, descripcion, voltajeAnterior, voltajeTransformado);
 	}
 
 	

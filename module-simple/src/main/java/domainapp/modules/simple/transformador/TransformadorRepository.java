@@ -15,16 +15,17 @@ import domainapp.modules.simple.unidadMantenimiento.UnidadDeMantenimiento;
 
 public class TransformadorRepository {
 	
-	List<Transformador> listarTransformadores(){
+	public List<Transformador> listarTransformadores(){
 		return repositoryService.allInstances(Transformador.class);
 	}
 	
 	public UnidadDeMantenimiento crear(
+			final String numeroDeSerie,
 			final EstadoUnidad estadoUnidad,
 			final String descripcion,
 			final double voltajeAnterior,
 			final double voltajeTransformado) {
-		final UnidadDeMantenimiento object = new Transformador(estadoUnidad, descripcion, voltajeAnterior, voltajeTransformado);
+		final UnidadDeMantenimiento object = new Transformador(numeroDeSerie,estadoUnidad, descripcion, voltajeAnterior, voltajeTransformado);
 		serviceRegistry.injectServicesInto(object);
 		repositoryService.persist(object);
 		return object;

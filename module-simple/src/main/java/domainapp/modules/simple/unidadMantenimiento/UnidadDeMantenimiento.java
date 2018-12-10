@@ -1,5 +1,6 @@
 package domainapp.modules.simple.unidadMantenimiento;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.DiscriminatorStrategy;
 import javax.jdo.annotations.IdentityType;
@@ -33,12 +34,25 @@ import lombok.AccessLevel;
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
 public abstract class UnidadDeMantenimiento implements Comparable<UnidadDeMantenimiento> {
+	
+	@Column(allowsNull="false")
+	@lombok.NonNull
+	@Property()
+	@Title(prepend="Numero de Serie: ")
+	private String numeroDeSerie;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Property() // editing disabled by default, see isis.properties
     @Title(prepend = "Estado Unidad: ")
     private EstadoUnidad estadoUnidad;
+    
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "estadoUnidad")
+	public UnidadDeMantenimiento updateNumeroDeSerie(
+			@Parameter() @ParameterLayout(named = "Numero de Serie") final String numeroDeSerie) {
+		setNumeroDeSerie(numeroDeSerie);
+		return this;
+	}
     
 	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "estadoUnidad")
 	public UnidadDeMantenimiento updateEstadoUnidad(
