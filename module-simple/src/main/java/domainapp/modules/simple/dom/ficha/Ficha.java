@@ -132,7 +132,7 @@ public class Ficha implements Comparable<Ficha> {
 	}
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
-    public void delete() {
+    public void borrarFicha() {
         final String title = titleService.titleOf(this);
         messageService.informUser(String.format("'%s' deleted", title));
         repositoryService.remove(this);

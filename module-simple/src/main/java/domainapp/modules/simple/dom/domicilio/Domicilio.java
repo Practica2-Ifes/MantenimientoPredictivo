@@ -108,10 +108,7 @@ public class Domicilio implements Comparable<Domicilio> {
 		setDepartamento(departamento);
 		return this;
 	}
-    
-    @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
-    @Property(editing = Editing.ENABLED)
-    private String notes;
+
 
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)

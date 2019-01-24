@@ -27,7 +27,7 @@
                                 <c:property id="estadoCivil" namedEscaped="true"/>
                                 <c:property id="domicilio" namedEscaped="true"/>
                                 <c:property id="numeroEmpleado" namedEscaped="true"/>
-                                <c:property id="sectorTrabajo" namedEscaped="true"/>
+                                <c:property id="sectorDeTrabajo" namedEscaped="true"/>
                                 <c:property id="obraSocial" namedEscaped="true"/>
                                 <c:property id="art" namedEscaped="true"/>
                                 <c:property id="matriculaProfesional" namedEscaped="true"/>

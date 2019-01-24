@@ -204,6 +204,8 @@ public class Tecnico extends Persona implements Comparable<Tecnico>{
 		public void borrarTecnico() {
 			final String title = titleService.titleOf(this);
 			messageService.informUser(String.format("'%s' deleted", title));
+	        repositoryService.remove(this);
+
 		}
 
 

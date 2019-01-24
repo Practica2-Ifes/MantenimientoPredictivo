@@ -77,23 +77,30 @@ public class ReporteMenu {
 	@MemberOrder(sequence="2")
 	public Blob imprimirTecnicoIndividual(final Tecnico tecnico)throws JRException,IOException {
 		
-		List<Object> listaReporte = new ArrayList<Object>();
-		TecnicoDataSource dataSource=new TecnicoDataSource();
+		TecnicoDataSource datasource = new TecnicoDataSource();
+		for (Tecnico tec : tecnicoRepository.listarTecnico()){
+		 if(tecnico.equals(tec)) {
+			TecnicoReporte tecnicoReporte=new TecnicoReporte();
+			tecnicoReporte.setName(tecnico.getName());
+			tecnicoReporte.setApellido(tecnico.getApellido());
+			tecnicoReporte.setEmail(tecnico.getEmail());
+			tecnicoReporte.setTitulo(tecnico.getTitulo());
+			tecnicoReporte.setMatricula(tecnico.getMatriculaProfesional());
+			tecnicoReporte.setNumeroEmpleado(tecnico.getNumeroEmpleado());
+			datasource.addTecnico(tecnicoReporte);
+		 }
+		}
+		String jrxml = "TecnicoSelec.jrxml";
+		String nombreArchivo = "Un solo Tecnico";
 		
-		TecnicoReporte tecnicoReporte= new TecnicoReporte();
-		tecnicoReporte.setName(tecnico.getName());
-		tecnicoReporte.setApellido(tecnico.getApellido());
-		tecnicoReporte.setEmail(tecnico.getEmail());
-		tecnicoReporte.setNumeroEmpleado(tecnico.getNumeroEmpleado());
-		tecnicoReporte.setTitulo(tecnico.getTitulo());
-		tecnicoReporte.setMatricula(tecnico.getMatriculaProfesional());
+		InputStream input = ReporteRepository.class.getResourceAsStream(jrxml);
+		JasperDesign jd = JRXmlLoader.load(input);
 		
-		dataSource.addTecnico(tecnicoReporte); 
-		listaReporte.add(tecnicoReporte);
-		String jrxml="TecnicoSelec.jrxml";
-		String nombreArchivo="Tecnico: "+tecnico.getApellido()+"_"+tecnico.getDocumento();
+		JasperReport reporte = JasperCompileManager.compileReport(jd);
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, datasource);
 		
-		return ReporteRepository.imprimirReporte(listaReporte, jrxml, nombreArchivo);
+		return ReporteRepository.imprimirReporteLista(jasperPrint, jrxml, nombreArchivo);
 		
 	}
 	

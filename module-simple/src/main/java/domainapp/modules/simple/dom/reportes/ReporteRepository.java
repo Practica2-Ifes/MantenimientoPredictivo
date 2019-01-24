@@ -69,7 +69,6 @@ public class ReporteRepository {
 		
 	}
 public static Blob imprimirReporteLista(JasperPrint jasperPrint, String jrxml, String nombreArchivo) throws JRException, IOException{
-		
 		File pdf = File.createTempFile("output.", ".pdf");
 		JasperExportManager.exportReportToPdfStream(jasperPrint, new FileOutputStream(pdf));
 		
