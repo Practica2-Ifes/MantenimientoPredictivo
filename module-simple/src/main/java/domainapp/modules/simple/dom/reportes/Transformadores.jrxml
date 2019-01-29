@@ -28,9 +28,9 @@
 			<frame>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="0" width="842" height="229" backcolor="#F27F0C" uuid="a5f4ffdc-fb10-4121-971c-eb47e82ad6c0"/>
 				<staticText>
-					<reportElement key="" positionType="FixRelativeToBottom" x="168" y="60" width="490" height="83" uuid="1ee891e4-6fdb-44dc-8b9d-2d897f0afb1c"/>
+					<reportElement key="" positionType="FixRelativeToBottom" x="168" y="60" width="532" height="83" uuid="1ee891e4-6fdb-44dc-8b9d-2d897f0afb1c"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Dyuthi" size="60" isBold="true" isUnderline="true"/>
+						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
 						<paragraph lineSpacing="1_1_2"/>
 					</textElement>
 					<text><![CDATA[Transformadores]]></text>
@@ -47,31 +47,46 @@
 				<reportElement x="160" y="0" width="120" height="30" uuid="0273aa8a-7a19-4a1c-985f-944b986d35a4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f38574e-0a43-4fff-8c22-650631a9e4cf"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[descripcion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="306" y="0" width="128" height="30" uuid="f7951d76-81f1-45a3-b9a3-90a7a860e198">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ed808b1-0779-47ff-8ee7-d790f21c2c58"/>
 				</reportElement>
-				<text><![CDATA[estadoUnidad]]></text>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Estado Unidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="462" y="0" width="128" height="30" uuid="9d61cdc8-2ef1-4d4d-aef3-c088e67002a5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3f05caa-3084-4e5b-850f-0cb98d77db98"/>
 				</reportElement>
-				<text><![CDATA[voltajeEntrada]]></text>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Voltaje Entrada]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="615" y="0" width="200" height="30" uuid="a5bbde78-dc86-4223-8cc3-6494f43fda3d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5808ae2-3a94-4d45-82bf-5d6eccac876e"/>
 				</reportElement>
-				<text><![CDATA[voltajeSalida]]></text>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Voltaje Salida]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-1" y="0" width="100" height="30" uuid="0724224c-c459-4936-af53-c3cb657bd29a">
+				<reportElement x="0" y="0" width="100" height="30" uuid="0724224c-c459-4936-af53-c3cb657bd29a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53065198-f0c0-4233-a2b4-1d2dfe37f654"/>
 				</reportElement>
-				<text><![CDATA[numeroDeSerie]]></text>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Numero de Serie]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

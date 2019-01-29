@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.inject.Inject;
 
@@ -29,10 +30,14 @@ import domainapp.modules.simple.interruptor.InterruptorRepository;
 import domainapp.modules.simple.transformador.Transformador;
 import domainapp.modules.simple.transformador.TransformadorRepository;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
@@ -44,11 +49,8 @@ public class ReporteMenu {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "1")
 	public Blob imprimirTecnico() throws JRException, IOException {
-		
 		TecnicoDataSource datasource = new TecnicoDataSource();
-		
 		for (Tecnico tec : tecnicoRepository.listarTecnico()){
-		
 			TecnicoReporte tecnicoReporte=new TecnicoReporte();
 			tecnicoReporte.setName(tec.getName());
 			tecnicoReporte.setApellido(tec.getApellido());
@@ -60,14 +62,11 @@ public class ReporteMenu {
 		}
 		String jrxml = "Tecnicos.jrxml";
 		String nombreArchivo = "Listado Tecnico ";
-		
 		InputStream input = ReporteRepository.class.getResourceAsStream(jrxml);
 		JasperDesign jd = JRXmlLoader.load(input);
-		
 		JasperReport reporte = JasperCompileManager.compileReport(jd);
 		Map<String, Object> parametros = new HashMap<String, Object>();
-		JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, datasource);
-		
+		JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros,datasource);
 		return ReporteRepository.imprimirReporteLista(jasperPrint, jrxml, nombreArchivo);
 		
 	}
@@ -200,13 +199,13 @@ public class ReporteMenu {
 	}
 	
 	@Inject
+	static
 	TecnicoRepository tecnicoRepository;
-	
 	@Inject
 	GeneradorRepository generadorRepository;
 	
 	@Inject
 	TransformadorRepository transformadorRepository;
-	
+	@Inject
 	InterruptorRepository interruptorRepository;
 }
