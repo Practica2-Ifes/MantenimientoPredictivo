@@ -18,9 +18,11 @@
  */
 package domainapp.application.fixture.scenarios;
 
-import org.apache.isis.applib.fixturescripts.FixtureScript;
+import javax.inject.Inject;
 
-import domainapp.application.fixture.RecreateDomicilio;
+import org.apache.isis.applib.AppManifest2;
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+import org.apache.isis.applib.services.metamodel.MetaModelService4;
 
 public class DomainAppDemo extends FixtureScript {
 
@@ -30,14 +32,14 @@ public class DomainAppDemo extends FixtureScript {
 
     @Override
     protected void execute(final ExecutionContext ec) {
-//        AppManifest2 appManifest2 = metaModelService4.getAppManifest2();
-//        ec.executeChild(this, appManifest2.getTeardownFixture());
-//        ec.executeChild(this, appManifest2.getRefDataSetupFixture());
+        AppManifest2 appManifest2 = metaModelService4.getAppManifest2();
+        ec.executeChild(this, appManifest2.getTeardownFixture());
+        ec.executeChild(this, appManifest2.getRefDataSetupFixture());
 //        ec.executeChild(this, new TecnicoFixture.PersistAll());
 //        ec.executeChild(this, new DomicilioCreate());
-        ec.executeChild(this, new RecreateDomicilio());
+    	ec.executeChild(this, new RecreateDomicilio());
     }
 
-//    @Inject
-//    MetaModelService4 metaModelService4;
+    @Inject
+    MetaModelService4 metaModelService4;
 }

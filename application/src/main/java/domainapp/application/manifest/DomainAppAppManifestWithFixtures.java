@@ -22,7 +22,7 @@ import java.util.List;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import domainapp.application.fixture.RecreateDomicilio;
+import domainapp.application.fixture.scenarios.RecreateDomicilio;
 
 /**
  * Run the app but setting up any fixtures.
