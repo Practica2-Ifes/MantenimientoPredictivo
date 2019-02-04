@@ -1,4 +1,4 @@
-package domainapp.application.fixture;
+package domainapp.application.fixture.scenarios;
 
 import java.util.Arrays;
 import java.util.Collections;

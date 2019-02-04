@@ -32,7 +32,7 @@ public class DomicilioMenu {
 						  @ParameterLayout(named = "Barrio") final String barrio,
 						  @ParameterLayout(named = "Provincia") final Provincia provincia,
 						  @ParameterLayout(named = "Localidad") final String localidad,
-						  @ParameterLayout(named = "Departamento") final String departamento)
+						  @ParameterLayout(named = "Numero de Departamento") final String departamento)
 
 
 	{

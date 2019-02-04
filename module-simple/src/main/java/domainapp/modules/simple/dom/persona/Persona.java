@@ -66,7 +66,7 @@ public abstract class Persona {
 	@PropertyLayout(named = "Fecha Nacimiento")
 	private LocalDate fechaNacimiento;
 	
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "Fecha Nacimiento")
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "fechaNacimiento")
 	public Persona updateFechaNacimiento(@ParameterLayout(named = "fechaNacimiento") final LocalDate fechaNacimiento) {
 		setFechaNacimiento(fechaNacimiento);
 		return this;
@@ -146,7 +146,7 @@ public abstract class Persona {
 	@PropertyLayout(named = "Tipo de Documento")
 	private TipoDeDocumento tipoDocumento;
 
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "Tipo de Documento")
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "tipoDocumento")
 	public Persona updateTipoDocumento(
 			@Parameter(maxLength = 40) @ParameterLayout(named = "tipoDocumento") final TipoDeDocumento tipoDocumento) {
 		setTipoDocumento(tipoDocumento);
@@ -195,18 +195,7 @@ public abstract class Persona {
 	@PropertyLayout(named = "Domicilio")
 	private Domicilio domicilio;
 	
-	@javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
-	@Property(editing = Editing.ENABLED)
-	private String notes;
 
-	// public Integer default0UpdateDocumento() {
-	// return getDocumento();
-	// }
-	//
-	// public TranslatableString validate0UpdateDocumento(final String apellido) {
-	// boolean contieneCaracter = Pattern.matches("^[a-zA-z]*$", apellido);
-	// return (apellido == null) ? TranslatableString.tr("contiene caracteres no
-	// permitidos" + contieneCaracter) : null;
-	// }
+
 
 }

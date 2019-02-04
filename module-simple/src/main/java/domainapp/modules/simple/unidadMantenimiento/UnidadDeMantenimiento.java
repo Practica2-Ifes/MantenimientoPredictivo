@@ -40,6 +40,13 @@ public abstract class UnidadDeMantenimiento implements Comparable<UnidadDeManten
 	@Property()
 	@Title(prepend="Numero de Serie: ")
 	private String numeroDeSerie;
+	
+    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "numeroDeSerie")
+	public UnidadDeMantenimiento updateNumeroDeSerie(
+			@Parameter() @ParameterLayout(named = "Numero de Serie") final String numeroDeSerie) {
+		setNumeroDeSerie(numeroDeSerie);
+		return this;
+	}
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
@@ -47,12 +54,7 @@ public abstract class UnidadDeMantenimiento implements Comparable<UnidadDeManten
     @Title(prepend = "Estado Unidad: ")
     private EstadoUnidad estadoUnidad;
     
-    @Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "estadoUnidad")
-	public UnidadDeMantenimiento updateNumeroDeSerie(
-			@Parameter() @ParameterLayout(named = "Numero de Serie") final String numeroDeSerie) {
-		setNumeroDeSerie(numeroDeSerie);
-		return this;
-	}
+
     
 	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "estadoUnidad")
 	public UnidadDeMantenimiento updateEstadoUnidad(
@@ -75,7 +77,7 @@ public abstract class UnidadDeMantenimiento implements Comparable<UnidadDeManten
 	}
     
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
-    public void delete() {
+    public void borrarUnidad() {
         final String title = titleService.titleOf(this);
         messageService.informUser(String.format("'%s' deleted", title));
         repositoryService.remove(this);

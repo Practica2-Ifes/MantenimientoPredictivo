@@ -33,9 +33,9 @@ public class Interruptor extends UnidadDeMantenimiento {
 	@Property()
 	private Double amperajeSoportado;
 	
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "voltajeTransformado")
+	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED, associateWith = "amperajeSoportado")
 	public Interruptor updateAmperajeSoportado(
-			@Parameter() @ParameterLayout(named = "Amperae Soportado") final Double amperajeSoportado) {
+			@Parameter() @ParameterLayout(named = "Amperaje Soportado") final Double amperajeSoportado) {
 		setAmperajeSoportado(amperajeSoportado);
 		return this;
 	}
