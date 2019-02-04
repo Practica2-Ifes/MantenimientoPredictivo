@@ -11,7 +11,7 @@ import domainapp.modules.simple.generador.Generador;
 import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 
 public class RecreateGenerador extends FixtureScript{
-	public final List<String> numeroDeSerie =Collections.unmodifiableList(Arrays.asList("910AF34AA49","910AB54BB49","910AD89CD44")); 
+	public final List<String> numeroDeSerie =Collections.unmodifiableList(Arrays.asList("GNR11AF34AA49","GNR12AB54BB49","GNR13AD89CD44")); 
 	public final List<String> descripcion=  Collections.unmodifiableList(Arrays.asList(" "," "," "));
 	public final List<Double> consumoEnergetico =Collections.unmodifiableList(Arrays.asList(2200000.00,400000.00,1000000.00));
 	
