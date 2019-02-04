@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8aad4a7c-7d47-4e56-8726-a22c9f3345b8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JRDATranformador"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
+	</field>
+	<field name="estadoUnidad" class="domainapp.modules.simple.unidadMantenimiento.EstadoUnidad">
+		<fieldDescription><![CDATA[estadoUnidad]]></fieldDescription>
+	</field>
+	<field name="voltajeEntrada" class="java.lang.Double">
+		<fieldDescription><![CDATA[voltajeEntrada]]></fieldDescription>
+	</field>
+	<field name="voltajeSalida" class="java.lang.Double">
+		<fieldDescription><![CDATA[voltajeSalida]]></fieldDescription>
+	</field>
+	<field name="numeroDeSerie" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroDeSerie]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="229" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="0" width="842" height="229" backcolor="#F27F0C" uuid="a5f4ffdc-fb10-4121-971c-eb47e82ad6c0"/>
+				<staticText>
+					<reportElement key="" positionType="FixRelativeToBottom" x="168" y="60" width="532" height="83" uuid="1ee891e4-6fdb-44dc-8b9d-2d897f0afb1c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
+						<paragraph lineSpacing="1_1_2"/>
+					</textElement>
+					<text><![CDATA[Transformadores]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="0" width="120" height="30" uuid="0273aa8a-7a19-4a1c-985f-944b986d35a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f38574e-0a43-4fff-8c22-650631a9e4cf"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="0" width="128" height="30" uuid="f7951d76-81f1-45a3-b9a3-90a7a860e198">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ed808b1-0779-47ff-8ee7-d790f21c2c58"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Estado Unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="0" width="128" height="30" uuid="9d61cdc8-2ef1-4d4d-aef3-c088e67002a5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3f05caa-3084-4e5b-850f-0cb98d77db98"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Voltaje Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="615" y="0" width="200" height="30" uuid="a5bbde78-dc86-4223-8cc3-6494f43fda3d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5808ae2-3a94-4d45-82bf-5d6eccac876e"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Voltaje Salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="0724224c-c459-4936-af53-c3cb657bd29a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53065198-f0c0-4233-a2b4-1d2dfe37f654"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Numero de Serie]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="0" width="120" height="30" uuid="a84c75d7-e14a-4c28-987d-4f38483505ae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f38574e-0a43-4fff-8c22-650631a9e4cf"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="0" width="128" height="30" uuid="cd8d8687-9f66-4df0-bbb4-8c583156cee2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0ed808b1-0779-47ff-8ee7-d790f21c2c58"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{estadoUnidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="0" width="128" height="30" uuid="6d45bce6-b1f5-4ea7-b420-f446405b9ce2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3f05caa-3084-4e5b-850f-0cb98d77db98"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{voltajeEntrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="0" width="200" height="30" uuid="9ff4d213-df26-43ce-bac6-f56846a36719">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5808ae2-3a94-4d45-82bf-5d6eccac876e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{voltajeSalida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="1" width="100" height="30" uuid="fde6678d-088e-4554-bb2f-248a173b4cb0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53065198-f0c0-4233-a2b4-1d2dfe37f654"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{numeroDeSerie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

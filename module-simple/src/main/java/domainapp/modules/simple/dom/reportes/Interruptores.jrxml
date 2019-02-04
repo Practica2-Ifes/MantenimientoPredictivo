@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd4d273d-bfc4-4aa2-bb98-208d15db15ea">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JRDAInterruptores"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
+	</field>
+	<field name="estadoUnidad" class="domainapp.modules.simple.unidadMantenimiento.EstadoUnidad">
+		<fieldDescription><![CDATA[estadoUnidad]]></fieldDescription>
+	</field>
+	<field name="amperajeSoportado" class="java.lang.Double">
+		<fieldDescription><![CDATA[amperajeSoportado]]></fieldDescription>
+	</field>
+	<field name="numeroDeSerie" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroDeSerie]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="229" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="0" width="842" height="229" backcolor="#F27F0C" uuid="48a8ca63-d552-456b-93f6-6bf5c2d04f60"/>
+				<staticText>
+					<reportElement key="" positionType="FixRelativeToBottom" x="223" y="60" width="437" height="83" uuid="209bc551-f16c-4581-b80d-7e91efc9b5ba"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
+						<paragraph lineSpacing="1_1_2"/>
+					</textElement>
+					<text><![CDATA[Interruptores]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="620" y="0" width="202" height="30" uuid="8cb032ee-5d88-42c2-883b-72fa3653a97c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0d14f7e-7915-4196-a2cc-7c47b6616a9d"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="200" height="30" uuid="717d9985-d070-4edc-8781-1c264ee61da9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dcc644a-9e07-43b3-916a-391ce8920240"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Estado Unidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="0" width="200" height="30" uuid="ad28c085-3127-4c05-ae45-078aa8ecfc4e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b236aaf-4dac-40f0-aadb-b50b2dfaae72"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Amperaje Soportado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="0" width="147" height="30" uuid="c639a9f8-bdb3-47fd-b89f-1c538b7d1131">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3eddf67-c68f-4837-95d0-1bbb01ec3b7e"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Numero De Serie]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="620" y="0" width="202" height="30" uuid="e6af8713-ebaf-44a7-9ed1-9ca8fd419864">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b0d14f7e-7915-4196-a2cc-7c47b6616a9d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="200" height="30" uuid="0803bb84-83a3-4e1f-8629-b4b12fe632b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dcc644a-9e07-43b3-916a-391ce8920240"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{estadoUnidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="0" width="200" height="30" uuid="4e8c229f-3de7-466a-b59e-0a4c09036f9a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b236aaf-4dac-40f0-aadb-b50b2dfaae72"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{amperajeSoportado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="0" width="147" height="30" uuid="23536594-5251-45a9-b214-a1ac26d63969">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c3eddf67-c68f-4837-95d0-1bbb01ec3b7e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{numeroDeSerie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
