@@ -51,6 +51,9 @@
 				<mb3:serviceAction objectType="simple.Generador" id="crear">
 					<cpt:named>Crear Generador</cpt:named>
 				</mb3:serviceAction>
+				<mb3:serviceAction objectType="simple.Generador" id="sumaConsumo">
+					<cpt:named>Suma Consumo Energetico de Generadores</cpt:named>
+				</mb3:serviceAction>
 				<mb3:serviceAction objectType="simple.Interruptor" id="listar">
 					<cpt:named>Listar Interruptores</cpt:named>
 				</mb3:serviceAction>

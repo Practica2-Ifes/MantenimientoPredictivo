@@ -16,7 +16,7 @@ import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 
 public class RecreateInterruptor extends FixtureScript{
 	List<String> numeroDeSerie =Collections.unmodifiableList(Arrays.asList("INT11FF12AB45","INT12AB48BC15","INT13AC22DA21"));
-	List<String> descripcion=Collections.unmodifiableList(Arrays.asList(" "," "," "));
+	List<String> descripcion=Collections.unmodifiableList(Arrays.asList(" Schneider "," Estanco "," Merlin Gerin "));
 	List<Double> amperajeSoportado=Collections.unmodifiableList(Arrays.asList(100000.00,200000.00,250000.00));
 	
 	public RecreateInterruptor() {

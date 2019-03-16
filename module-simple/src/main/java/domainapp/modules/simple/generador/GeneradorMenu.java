@@ -6,11 +6,13 @@ import java.util.List;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.CommandReification;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.query.QueryDefault;
 
@@ -37,6 +39,14 @@ public class GeneradorMenu {
 										@ParameterLayout(named="Descripcion")final String descripcion,
 										@ParameterLayout(named="Consumo Energetico")final Double consumoEnergetico) {
 		return generadorRepository.crear(numeroDeSerie, estadoUnidad, descripcion, consumoEnergetico);
+	}
+	
+	
+	@Action(semantics = SemanticsOf.SAFE)
+	@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named ="Suma Consumo")
+	@MemberOrder(sequence = "4")
+	public Double sumaConsumo() {
+		return generadorRepository.sumaConsumo();
 	}
 	
 	@javax.inject.Inject

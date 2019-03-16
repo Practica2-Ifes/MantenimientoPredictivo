@@ -51,10 +51,7 @@ public class Generador extends UnidadDeMantenimiento {
 		return this;
 	}
 	
-	@Action(semantics = SemanticsOf.IDEMPOTENT, command = CommandReification.ENABLED, publishing = Publishing.ENABLED)
-	public Double sumaConsumo() {
-		return generadorRepository.sumaConsumo();
-	}
+
 	
 	@Override
 	public int compareTo(UnidadDeMantenimiento o) {

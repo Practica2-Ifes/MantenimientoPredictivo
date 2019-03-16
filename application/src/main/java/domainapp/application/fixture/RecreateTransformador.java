@@ -17,7 +17,7 @@ import domainapp.modules.simple.unidadMantenimiento.EstadoUnidad;
 public class RecreateTransformador extends FixtureScript{
 	
 	List<String> numeroDeSerie =Collections.unmodifiableList(Arrays.asList("TRF11FF12AB45","TRF12AB48BC15","TRF13AC22DA21"));
-	List<String> descripcion=Collections.unmodifiableList(Arrays.asList(" "," "," "));
+	List<String> descripcion=Collections.unmodifiableList(Arrays.asList(" Balma "," Lipari "," GBE Power "));
 	List<Double> voltajeAnterior=Collections.unmodifiableList(Arrays.asList(800000.00,500000.00,900000.00));
 	List<Double> voltajeTransformado=Collections.unmodifiableList(Arrays.asList(400000.00,250000.00,450000.00));
 	

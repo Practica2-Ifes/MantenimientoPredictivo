@@ -24,6 +24,8 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Nature;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 
+import domainapp.modules.simple.dom.ficha.Ficha;
+import domainapp.modules.simple.dom.ficha.FichaRepository;
 import domainapp.modules.simple.dom.persona.Persona;
 import domainapp.modules.simple.dom.persona.PersonaRepository;
 
@@ -34,13 +36,13 @@ import domainapp.modules.simple.dom.persona.PersonaRepository;
 public class HomePageViewModel {
 
     public TranslatableString title() {
-        return TranslatableString.tr("{num} objects", "num", getObjects().size());
+        return TranslatableString.tr("{num} fichas", "num", getFichas().size());
     }
 
-    public List<Persona> getObjects() {
-        return personas.listarPersonas();
+    public List<Ficha> getFichas() {
+        return fichas.listarFichas();
     }
 
     @javax.inject.Inject
-    PersonaRepository personas;
+    FichaRepository fichas;
 }

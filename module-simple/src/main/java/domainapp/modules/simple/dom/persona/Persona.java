@@ -47,7 +47,6 @@ import org.joda.time.LocalDate;
 
 @javax.jdo.annotations.PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "mantenimiento")
 @javax.jdo.annotations.DatastoreIdentity(strategy = javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column = "personaId")
-@javax.jdo.annotations.Unique(name = "Persona_documento_UNQ", members = { "documento" })
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 
 @lombok.Getter
