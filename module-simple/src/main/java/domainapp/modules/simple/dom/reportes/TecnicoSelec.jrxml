@@ -33,7 +33,7 @@
 				<staticText>
 					<reportElement key="" positionType="FixRelativeToBottom" x="240" y="60" width="390" height="83" uuid="874a8729-3ec6-4673-9fd5-2db41cb702df"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
+						<font size="60" isBold="true" isUnderline="true"/>
 						<paragraph lineSpacing="1_1_2"/>
 					</textElement>
 					<text><![CDATA[Tecnico]]></text>
@@ -50,54 +50,36 @@
 				<reportElement x="-12" y="0" width="100" height="30" uuid="70b8dc0b-d919-4bc4-b1e1-9ff9c4c7db4a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca488eda-d73d-4352-8c5e-fe0ef0102669"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="92" y="0" width="100" height="30" uuid="a96174fd-aa45-49e5-8db3-6eb2001323cc">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="35b67d29-51ea-4cc1-8d68-62d71c911122"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Apellido]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="196" y="0" width="100" height="30" uuid="f0652573-748d-4736-9f69-8c0b201d4de5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="351e8928-cad8-4750-ae82-339993dbd2a2"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="299" y="0" width="100" height="30" uuid="a0ddcceb-7d60-45cb-9d9c-f1a00f0e3279">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="25395765-ea9b-4897-b9b3-1e3b9c53e2df"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Numero Empleado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="406" y="0" width="100" height="30" uuid="a328079f-44cf-4bbd-b096-41893f7c171e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1807eece-dcc2-471d-afbc-f70c847397ba"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Titulo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="516" y="0" width="100" height="30" uuid="c75bd8c2-91ce-4cb9-be16-c642fa19708b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38cf36de-968b-47df-a9f4-3fa99082a297"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[Matricula]]></text>
 			</staticText>
 		</band>

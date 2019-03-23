@@ -42,7 +42,7 @@
 				<staticText>
 					<reportElement key="" positionType="FixRelativeToBottom" x="40" y="60" width="760" height="83" uuid="6b349213-d8a8-407f-b4da-c52694175381"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
+						<font   size="60" isBold="true" isUnderline="true"/>
 						<paragraph lineSpacing="1_1_2"/>
 					</textElement>
 					<text><![CDATA[Tecnicos Trabajando]]></text>
@@ -60,7 +60,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7019705a-def4-4543-9ff8-adcfc5594813"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Numero Empleado]]></text>
 			</staticText>
@@ -69,7 +69,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3673f07b-0c4c-4b04-b8ab-8f9e668e7823"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
@@ -78,7 +78,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7a72d167-9ccb-468b-8a6d-c1c71c687afe"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Apellido]]></text>
 			</staticText>
@@ -87,7 +87,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7e124e14-2ca2-4766-98d1-9ec359c0f28f"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Email]]></text>
 			</staticText>
@@ -96,7 +96,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="567a9223-5833-4309-8656-01f877645dbc"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Titulo]]></text>
 			</staticText>
@@ -105,7 +105,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec20b46a-46cb-447b-966b-e15043f6048b"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial"/>
+					<font  />
 				</textElement>
 				<text><![CDATA[Matricula]]></text>
 			</staticText>

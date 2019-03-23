@@ -27,7 +27,7 @@
 				<staticText>
 					<reportElement key="" positionType="FixRelativeToBottom" x="240" y="60" width="390" height="83" uuid="3dd6be09-9358-429c-b5b4-75085bd6c849"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="60" isBold="true" isUnderline="true"/>
+						<font size="60" isBold="true" isUnderline="true"/>
 						<paragraph lineSpacing="1_1_2"/>
 					</textElement>
 					<text><![CDATA[Generadores]]></text>
@@ -44,36 +44,24 @@
 				<reportElement x="244" y="0" width="100" height="30" uuid="b413acfb-bcbd-420f-8ada-a2f1bddda4d1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a592b8f9-2869-44ca-af21-fb0dc2b18091"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[consumoEnergetico]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="496" y="0" width="100" height="30" uuid="7296e6df-ebaa-48a1-9bf0-e04891aa593c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2138849c-1777-4ac2-bfdb-c7eb01d5fd8a"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[descripcion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="660" y="0" width="100" height="30" uuid="4a21b447-c3dc-4d82-bc12-27e2b9d50880">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c03bf18c-8275-4a83-af71-c0772be6ffcf"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[estadoUnidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="65" y="0" width="100" height="30" uuid="fe0f9314-1f88-4c2e-a5b8-4f9c92827cd7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e13bacab-5be2-405a-a2ff-d916eb7d9e30"/>
 				</reportElement>
-				<textElement>
-					<font fontName="Arial"/>
-				</textElement>
 				<text><![CDATA[numeroDeSerie]]></text>
 			</staticText>
 		</band>
